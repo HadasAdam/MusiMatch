@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "448354391260",
+    "project_id": "musimatch-database",
+    "storage_bucket": "musimatch-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448354391260:android:fa3eb0b1a43394566c1019",
+        "android_client_info": {
+          "package_name": "com.example.musimatch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448354391260-3n78l0dqla5d95q1n8k7o71gg89idae2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsVLXiqERxYW44APHKkjFEdpAAYucTsmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448354391260-3n78l0dqla5d95q1n8k7o71gg89idae2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
