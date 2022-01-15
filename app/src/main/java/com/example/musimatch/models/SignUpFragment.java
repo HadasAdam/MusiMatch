@@ -72,13 +72,13 @@ public class SignUpFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sign_up,container, false);
-        firstNameEt = view.findViewById(R.id.FirstNameET);
-        lastNameEt = view.findViewById(R.id.LastNameET);
-        emailEt = view.findViewById(R.id.EmailET);
-        phoneNumberEt = view.findViewById(R.id.PhoneNumberET);
-        passwordEt = view.findViewById(R.id.PasswordET);
-        signUpBtn = view.findViewById(R.id.SignUpButton);
-        // countryET = view.findViewById(R.id.CountryET);
+        firstNameEt = view.findViewById(R.id.FirstNameEditProfile);
+        lastNameEt = view.findViewById(R.id.LastNameEditProfile);
+        emailEt = view.findViewById(R.id.EmailEditProfile);
+        phoneNumberEt = view.findViewById(R.id.PhoneNumberEditProfile);
+        passwordEt = view.findViewById(R.id.PasswordEditProfile);
+        signUpBtn = view.findViewById(R.id.CancelEditProfileBtn);
+        countryET = view.findViewById(R.id.CountryET);
         signUpBtn.setOnClickListener(v -> makeUser());
         return view;
     }
@@ -89,7 +89,7 @@ public class SignUpFragment extends Fragment {
         String email = emailEt.getText().toString();
         String phoneNumber = phoneNumberEt.getText().toString();
         String password = passwordEt.getText().toString();
-//        String country = countryET.getText().toString();
+        String country = countryET.getText().toString();
 
 //        User user = new User(1232441414L, firstName, lastName, email, phoneNumber, password, null, null, null);
 
