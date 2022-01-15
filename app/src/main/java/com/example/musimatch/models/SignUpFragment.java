@@ -79,7 +79,9 @@ public class SignUpFragment extends Fragment {
         passwordEt = view.findViewById(R.id.PasswordEditProfile);
         signUpBtn = view.findViewById(R.id.CancelEditProfileBtn);
         countryET = view.findViewById(R.id.CountryET);
+
         signUpBtn.setOnClickListener(v -> makeUser());
+
         return view;
     }
 
