@@ -1,4 +1,4 @@
-package com.example.bride2be.models;
+package com.example.musimatch.models;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
