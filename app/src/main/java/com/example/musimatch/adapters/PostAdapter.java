@@ -19,6 +19,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder>{
     public boolean isEditAvailable;
     LayoutInflater inflater;
     private OnItemClickListener onItemClickListener;
+    View view;
 
     public PostAdapter(LayoutInflater inflater){
         this.inflater = inflater;
@@ -36,7 +37,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder>{
     @NonNull
     @Override
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.post_poem_layout, parent, false);
+        view = inflater.inflate(R.layout.post_poem_layout, parent, false);
         PostViewHolder holder = new PostViewHolder(view, this.isEditAvailable);
         holder.onItemClickListener = onItemClickListener;
         return holder;

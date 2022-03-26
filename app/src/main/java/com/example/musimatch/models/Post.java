@@ -2,8 +2,10 @@ package com.example.musimatch.models;
 
 import androidx.room.Entity;
 
+import java.io.Serializable;
+
 @Entity
-public class Post {
+public class Post implements Serializable {
     private String id;
     private String title;
     private String poemLyrics;

@@ -4,12 +4,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.navigation.NavAction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.musimatch.AllPostsFragmentDirections;
 import com.example.musimatch.R;
 import com.example.musimatch.models.Post;
 import com.example.musimatch.models.UserModel;
 
-public class PostViewHolder extends RecyclerView.ViewHolder{
+public class PostViewHolder extends RecyclerView.ViewHolder {
     public PostAdapter.OnItemClickListener onItemClickListener;
     private boolean isEditAvailable;
     Post currentPost;
@@ -40,12 +44,14 @@ public class PostViewHolder extends RecyclerView.ViewHolder{
         }
 
         editButton.setOnClickListener(view -> {
-            //TODO: navigate to edit fragment and send the post
+            //TODO: Navigate to edit post
         });
 
         itemView.setOnClickListener(view -> {
             if (onItemClickListener != null) {
                 onItemClickListener.onItemClick(position);
+                AllPostsFragmentDirections.ActionAllPostsFragmentToPostDetailsFragment action = AllPostsFragmentDirections.actionAllPostsFragmentToPostDetailsFragment(currentPost);
+                Navigation.findNavController(view).navigate(action);
             }
         });
     }

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_purple">
+
+        <TextView
+            android:id="@+id/postDetails_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/bright_light_blue"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="TextView"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/postDetails_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/white"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="TextView"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_title" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/grayish_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_content" />
+
+        <TextView
+            android:id="@+id/postDetails_uploader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/post"
+            android:textColor="@color/banana"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/textView8"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_content" />
+
+        <TextView
+            android:id="@+id/postDetails_tags"
+            android:layout_width="215dp"
+            android:layout_height="20dp"
+            android:text="@string/post"
+            android:textColor="@color/bright_light_blue"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toStartOf="@+id/postDetails_linkedPosts"
+            app:layout_constraintHorizontal_bias="0.035"
+            app:layout_constraintStart_toStartOf="@+id/postDetails_uploader"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_uploader" />
+
+        <TextView
+            android:id="@+id/postDetails_rate"
+            android:layout_width="35dp"
+            android:layout_height="33dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/star"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintEnd_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_content" />
+
+        <TextView
+            android:id="@+id/postDetails_comments"
+            android:layout_width="40dp"
+            android:layout_height="33dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bubble"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintEnd_toStartOf="@+id/postDetails_rate"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_content" />
+
+        <TextView
+            android:id="@+id/postDetails_linkedPosts"
+            android:layout_width="35dp"
+            android:layout_height="33dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/link"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintEnd_toStartOf="@+id/postDetails_comments"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_content" />
+
+        <TextView
+            android:id="@+id/postDetails_rate1star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/star"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/postDetails_rate2star"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/postDetails_rate3star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/star"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/postDetails_rate2star"
+            app:layout_constraintTop_toTopOf="@+id/postDetails_rate2star" />
+
+        <TextView
+            android:id="@+id/postDetails_rate2star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/star"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/postDetails_rate3star"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/postDetails_rate1star"
+            app:layout_constraintTop_toTopOf="@+id/postDetails_rate1star" />
+
+        <TextView
+            android:id="@+id/postDetails_rate3title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Rate"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/postDetails_rate3star"
+            app:layout_constraintStart_toStartOf="@+id/postDetails_rate3star"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_rate3star" />
+
+        <TextView
+            android:id="@+id/postDetails_rate2title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Rate"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/postDetails_rate2star"
+            app:layout_constraintStart_toStartOf="@+id/postDetails_rate2star"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_rate2star" />
+
+        <TextView
+            android:id="@+id/postDetails_rate1title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Rate"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/postDetails_rate1star"
+            app:layout_constraintStart_toStartOf="@+id/postDetails_rate1star"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_rate1star" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Comments:"
+            android:textColor="@color/bright_light_blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_rate1title"
+            tools:layout_editor_absoluteX="17dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/PostDetails_recyclerView"
+            android:layout_width="409dp"
+            android:layout_height="478dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

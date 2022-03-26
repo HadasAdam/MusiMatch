@@ -7,7 +7,17 @@ public class Comment {
     private String userId;
     private String postId;
     private String content;
-    private Date time;
+    private Date commentUploadTime;
+
+    public Comment(){}
+
+    public Comment(String id, String userId, String postId, String content, Date commentUploadTime) {
+        this.id = id;
+        this.userId = userId;
+        this.postId = postId;
+        this.content = content;
+        this.commentUploadTime = commentUploadTime;
+    }
 
     public String getId() {
         return id;
@@ -41,11 +51,11 @@ public class Comment {
         this.content = content;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getCommentUploadTime() {
+        return commentUploadTime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setCommentUploadTime(Date commentUploadTime) {
+        this.commentUploadTime = commentUploadTime;
     }
 }

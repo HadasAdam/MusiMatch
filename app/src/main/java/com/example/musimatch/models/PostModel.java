@@ -35,7 +35,7 @@ public class PostModel {
     {
         for(int i = 0; i < 10; i++)
         {
-            posts.add(new Post(String.valueOf(i), "Post" + 1, "I love cats\nThey are so cute\nI want to have one",
+            posts.add(new Post(String.valueOf(i), "Post" + i, "I love cats\nThey are so cute\nI want to have one",
                     "", String.valueOf(i), PostType.POEM, 0d, null, null, null));
         }
     }
