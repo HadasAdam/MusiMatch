@@ -32,7 +32,7 @@ public class CommentModel {
         return null;
     }
 
-    private ArrayList<Comment> getCommentsByPostId(String postId) {
+    public ArrayList<Comment> getCommentsByPostId(String postId) {
         ArrayList<Comment> commentsOfPost = new ArrayList<>();
         for(Comment comment : comments)
         {
@@ -49,6 +49,11 @@ public class CommentModel {
         for(int i = 0; i < 10; i++)
         {
             comments.add(new Comment(String.valueOf(i), String.valueOf(i%2),String.valueOf(i),"Love it! " + i , new Date()));
+        }
+
+        for(int i = 10; i < 40; i++)
+        {
+            comments.add(new Comment(String.valueOf(i), String.valueOf(i%3),String.valueOf(i),"Nahh! " + i , new Date()));
         }
     }
 }
