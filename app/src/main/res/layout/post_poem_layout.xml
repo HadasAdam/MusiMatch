@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/postPoem_title"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/bright_light_blue"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="left|center_vertical"
+        android:text="@string/post"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/postPoem_lyrics"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:background="@color/white"
+        android:text="@string/post"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postPoem_title" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/grayish_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postPoem_lyrics" />
+
+    <TextView
+        android:id="@+id/postPoem_rate"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/star"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/postPoem_lyrics" />
+
+    <TextView
+        android:id="@+id/postPoem_comments"
+        android:layout_width="40dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bubble"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/postPoem_rate"
+        app:layout_constraintTop_toBottomOf="@+id/postPoem_lyrics" />
+
+    <TextView
+        android:id="@+id/postPoem_links"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/link"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/postPoem_comments"
+        app:layout_constraintTop_toBottomOf="@+id/postPoem_lyrics" />
+
+    <TextView
+        android:id="@+id/postPoem_uploader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/post"
+        android:textColor="@color/banana"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postPoem_lyrics" />
+
+    <TextView
+        android:id="@+id/postPoem_tags"
+        android:layout_width="218dp"
+        android:layout_height="19dp"
+        android:layout_marginBottom="2dp"
+        android:text="@string/post"
+        android:textColor="@color/bright_light_blue"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/postPoem_links"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/postPoem_uploader"
+        app:layout_constraintTop_toBottomOf="@+id/postPoem_uploader"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/postPoem_editButton"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Edit"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/grayish_blue"
+        app:layout_constraintEnd_toEndOf="@+id/postPoem_title"
+        app:layout_constraintTop_toTopOf="@+id/postPoem_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>
