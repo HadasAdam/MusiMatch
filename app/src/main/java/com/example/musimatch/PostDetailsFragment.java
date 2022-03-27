@@ -2,6 +2,7 @@ package com.example.musimatch;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -79,10 +80,14 @@ public class PostDetailsFragment extends Fragment {
     {
         postTitle.setText(post.getTitle());
         postLyrics.setText(post.getPoemLyrics() != null ? post.getPoemLyrics() + "" : "");
-        linkedPosts.setText(post.getLinkedPostsIds() != null ? post.getLinkedPostsIds().length + "" : "0");
-        comments.setText(post.getCommentsIds() != null ? post.getCommentsIds().length + "" : "");
+        linkedPosts.setText(post.getLinkedPostsIds() != null ? post.getLinkedPostsIds().size() + "" : "0");
+        comments.setText(post.getCommentsIds() != null ? post.getCommentsIds().size() + "" : "");
         rate.setText(String.valueOf(post.getAveragePostRate()));
         uploaderUsername.setText(UserModel.instance.findUserById(post.getUploaderId()).getUsername());
+
+        linkedPosts.setOnClickListener(v -> {
+            Navigation.findNavController(view).navigate(R.id.action_postDetailsFragment_to_linkPostFragment);
+        });
     }
 
     private void initializeComments(Post post) {

@@ -3,6 +3,7 @@ package com.example.musimatch.models;
 import androidx.room.Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 @Entity
 public class Post implements Serializable {
@@ -13,16 +14,16 @@ public class Post implements Serializable {
     private String uploaderId;
     private PostType postType;
     private Double averagePostRate;
-    private String[] linkedPostsIds;
-    private String[] commentsIds;
-    private String[] tags;
+    private ArrayList<String> linkedPostsIds = new ArrayList<>();
+    private ArrayList<String> commentsIds = new ArrayList<>();
+    private ArrayList<String> tags = new ArrayList<>();
     // TODO: ADD SerialRater[] serialRaters;
 
     public Post() { }
 
     public Post(String id, String title, String poemLyrics, String melodyFilePath, String uploaderId,
-                PostType postType, Double averagePostRate, String[] linkedPostsIds, String[] commentsIds,
-                String[] tags) {
+                PostType postType, Double averagePostRate, ArrayList<String> linkedPostsIds, ArrayList<String> commentsIds,
+                ArrayList<String> tags) {
         this.id = id;
         this.title = title;
         this.poemLyrics = poemLyrics;
@@ -83,19 +84,19 @@ public class Post implements Serializable {
         this.uploaderId = uploaderId;
     }
 
-    public String[] getLinkedPostsIds() {
+    public ArrayList<String> getLinkedPostsIds() {
         return linkedPostsIds;
     }
 
-    public void setLinkedPostsIds(String[] linkedPostsIds) {
+    public void setLinkedPostsIds(ArrayList<String> linkedPostsIds) {
         this.linkedPostsIds = linkedPostsIds;
     }
 
-    public String[] getTags() {
+    public ArrayList<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(ArrayList<String> tags) {
         this.tags = tags;
     }
 
@@ -107,11 +108,11 @@ public class Post implements Serializable {
         this.averagePostRate = averagePostRate;
     }
 
-    public String[] getCommentsIds() {
+    public ArrayList<String> getCommentsIds() {
         return commentsIds;
     }
 
-    public void setCommentsIds(String[] commentsIds) {
+    public void setCommentsIds(ArrayList<String> commentsIds) {
         this.commentsIds = commentsIds;
     }
 }

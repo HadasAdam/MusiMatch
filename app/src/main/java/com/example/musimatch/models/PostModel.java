@@ -31,6 +31,30 @@ public class PostModel {
         return null;
     }
 
+    public ArrayList<Post> findPostsByUserId(String userId) {
+        ArrayList<Post> relevantPosts = new ArrayList<>();
+        for (Post post : posts)
+        {
+            if(post.getUploaderId().equals(userId))
+            {
+                relevantPosts.add(post);
+            }
+        }
+        return relevantPosts;
+    }
+
+    public ArrayList<Post> findPostsByUserIdAndPostType(String userId, PostType postType) {
+        ArrayList<Post> relevantPosts = new ArrayList<>();
+        for (Post post : posts)
+        {
+            if(post.getUploaderId().equals(userId) && post.getPostType() == postType)
+            {
+                relevantPosts.add(post);
+            }
+        }
+        return relevantPosts;
+    }
+
     private void initializePostsList()
     {
         for(int i = 0; i < 10; i++)
