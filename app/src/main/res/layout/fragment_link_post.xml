@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LinkPostFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_purple">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Choose a post of yours to link!"
+            android:textColor="@color/bright_light_blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/linkPost_panel"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center"
+            android:text="No post was selected"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <Button
+            android:id="@+id/linkPost_backBtn"
+            android:layout_width="100dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="16dp"
+            android:text="Back"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:backgroundTint="@color/banana"
+            app:layout_constraintEnd_toStartOf="@+id/linkPost_removeBtn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linkPost_panel" />
+
+        <Button
+            android:id="@+id/linkPost_removeBtn"
+            android:layout_width="100dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="16dp"
+            android:text="Remove"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:backgroundTint="@color/banana"
+            app:layout_constraintEnd_toStartOf="@+id/linkPost_addBtn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/linkPost_backBtn"
+            app:layout_constraintTop_toBottomOf="@+id/linkPost_panel" />
+
+        <Button
+            android:id="@+id/linkPost_addBtn"
+            android:layout_width="100dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="16dp"
+            android:text="Add"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:backgroundTint="@color/banana"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/linkPost_removeBtn"
+            app:layout_constraintTop_toBottomOf="@+id/linkPost_panel" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/linkPost_recyclerView"
+            android:layout_width="409dp"
+            android:layout_height="557dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/linkPost_removeBtn"
+            tools:layout_editor_absoluteX="1dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

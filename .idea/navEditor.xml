@@ -13,8 +13,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-498" />
-                            <option name="y" value="-155" />
+                            <option name="x" value="-604" />
+                            <option name="y" value="-261" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -29,18 +29,44 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="linkPostFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-251" />
+                            <option name="y" value="-254" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_linkPostFragment_to_postDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="postDetailsFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-297" />
-                            <option name="y" value="-154" />
+                            <option name="x" value="-427" />
+                            <option name="y" value="-260" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
                             <entry key="action_postDetailsFragment_to_allPostsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_postDetailsFragment_to_linkPostFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

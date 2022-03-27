@@ -25,5 +25,17 @@
         <argument
             android:name="post"
             app:argType="com.example.musimatch.models.Post" />
+        <action
+            android:id="@+id/action_postDetailsFragment_to_linkPostFragment"
+            app:destination="@id/linkPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/linkPostFragment"
+        android:name="com.example.musimatch.LinkPostFragment"
+        android:label="fragment_link_post"
+        tools:layout="@layout/fragment_link_post" >
+        <action
+            android:id="@+id/action_linkPostFragment_to_postDetailsFragment"
+            app:destination="@id/postDetailsFragment" />
     </fragment>
 </navigation>

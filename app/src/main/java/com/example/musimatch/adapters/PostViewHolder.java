@@ -60,8 +60,8 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         currentPost = post;
         postTitle.setText(post.getTitle());
         postLyrics.setText(post.getPoemLyrics() != null ? post.getPoemLyrics() + "" : "");
-        linkedPosts.setText(post.getLinkedPostsIds() != null ? post.getLinkedPostsIds().length + "" : "0");
-        comments.setText(post.getCommentsIds() != null ? post.getCommentsIds().length + "" : "");
+        linkedPosts.setText(post.getLinkedPostsIds() != null ? post.getLinkedPostsIds().size() + "" : "0");
+        comments.setText(post.getCommentsIds() != null ? post.getCommentsIds().size() + "" : "");
         rate.setText(String.valueOf(post.getAveragePostRate()));
         uploaderUsername.setText(UserModel.instance.findUserById(post.getUploaderId()).getUsername());
         this.position = position;
