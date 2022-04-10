@@ -23,4 +23,24 @@
 
 
     <string name="post">Post</string>
+
+    <string-array name="postTypeSpinner">
+        <item>Song</item>
+        <item>Tone</item>
+    </string-array>
+
+    <string-array name="Tags1">
+        <item>Cats</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="Tags2">
+        <item>Love</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="Tags3">
+        <item>None</item>
+        <item></item>
+    </string-array>
 </resources>

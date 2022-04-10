@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 /**
@@ -26,6 +27,7 @@ public class NewPostFragment extends Fragment {
     Spinner thirdTag;
     Button saveBtn;
     Button cancelBtn;
+    ProgressBar progressBar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,13 +80,14 @@ public class NewPostFragment extends Fragment {
         thirdTag = view.findViewById(R.id.newPostTags3);
         saveBtn = view.findViewById(R.id.newPostSaveButton);
         cancelBtn = view.findViewById(R.id.newPostCancelButton);
+        progressBar = view.findViewById(R.id.progressBar);
         saveBtn.setOnClickListener(v -> onClickSaveButton());
         cancelBtn.setOnClickListener(v -> onClickCancelButton());
         return view;
     }
 
     private void onClickSaveButton() { // save new post
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     private void onClickCancelButton() { // cancel new post
