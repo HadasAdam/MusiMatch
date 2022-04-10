@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RatePostFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SeekBar
+            android:id="@+id/rate_post_frag_seekbar1"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="174dp"
+            android:layout_height="59dp"
+            android:max="10"
+            android:progress="3"
+            app:layout_constraintBottom_toBottomOf="@+id/rate_post_frag_star1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/rate_post_frag_star1"
+            app:layout_constraintTop_toTopOf="@+id/rate_post_frag_star1" />
+
+        <TextView
+            android:id="@+id/rate_post_frag_star1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/star"
+            app:layout_constraintEnd_toStartOf="@+id/rate_post_frag_seekbar1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rate_post_frag_headline" />
+
+        <TextView
+            android:id="@+id/rate_post_frag_star2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/star"
+            app:layout_constraintEnd_toStartOf="@+id/rate_post_frag_seekbar2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rate_post_frag_headline1" />
+
+        <TextView
+            android:id="@+id/rate_post_frag_star3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/star"
+            app:layout_constraintEnd_toStartOf="@+id/rate_post_frag_seekbar3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rate_post_frag_headline2" />
+
+        <TextView
+            android:id="@+id/rate_post_frag_headline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/rate_post_frag_star1"
+            app:layout_constraintStart_toStartOf="@+id/rate_post_frag_star1"
+            app:layout_constraintTop_toBottomOf="@+id/rate_post_frag_star1" />
+
+        <TextView
+            android:id="@+id/rate_post_frag_headline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/rate_post_frag_star2"
+            app:layout_constraintStart_toStartOf="@+id/rate_post_frag_star2"
+            app:layout_constraintTop_toBottomOf="@+id/rate_post_frag_star2" />
+
+        <TextView
+            android:id="@+id/rate_post_frag_headline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/rate_post_frag_star3"
+            app:layout_constraintStart_toStartOf="@+id/rate_post_frag_star3"
+            app:layout_constraintTop_toBottomOf="@+id/rate_post_frag_star3" />
+
+        <SeekBar
+            android:id="@+id/rate_post_frag_seekbar2"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="174dp"
+            android:layout_height="59dp"
+            android:max="10"
+            android:progress="3"
+            app:layout_constraintBottom_toBottomOf="@+id/rate_post_frag_star2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/rate_post_frag_star2"
+            app:layout_constraintTop_toTopOf="@+id/rate_post_frag_star2" />
+
+        <SeekBar
+            android:id="@+id/rate_post_frag_seekbar3"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="174dp"
+            android:layout_height="59dp"
+            android:max="10"
+            android:progress="3"
+            app:layout_constraintBottom_toBottomOf="@+id/rate_post_frag_star3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/rate_post_frag_star3"
+            app:layout_constraintTop_toTopOf="@+id/rate_post_frag_star3" />
+
+        <Button
+            android:id="@+id/rate_post_frag_savebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="save"
+            app:backgroundTint="@color/grayish_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/rate_post_frag_cancelbtn"
+            tools:layout_editor_absoluteY="597dp" />
+
+        <Button
+            android:id="@+id/rate_post_frag_cancelbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cancel"
+            app:backgroundTint="@color/grayish_blue"
+            app:layout_constraintBottom_toBottomOf="@+id/rate_post_frag_savebtn"
+            app:layout_constraintEnd_toStartOf="@+id/rate_post_frag_savebtn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rate_post_frag_savebtn" />
+
+        <TextView
+            android:id="@+id/rate_post_frag_headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Rate the post!"
+            android:textColor="@color/bright_light_blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
