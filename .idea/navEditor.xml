@@ -76,6 +76,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="ratePostFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-431" />
+                            <option name="y" value="68" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                 </map>
               </option>
             </LayoutPositions>

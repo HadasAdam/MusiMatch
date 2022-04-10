@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/dark_purple">
 
         <SeekBar
             android:id="@+id/rate_post_frag_seekbar1"
@@ -32,6 +33,11 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/star"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/rate_post_frag_seekbar1"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +50,11 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/star"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/rate_post_frag_seekbar2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +67,11 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/star"
+            android:fontFamily="sans-serif-smallcaps"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/rate_post_frag_seekbar3"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +81,9 @@
             android:id="@+id/rate_post_frag_headline1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
             android:text="TextView"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/rate_post_frag_star1"
             app:layout_constraintStart_toStartOf="@+id/rate_post_frag_star1"
             app:layout_constraintTop_toBottomOf="@+id/rate_post_frag_star1" />
@@ -74,7 +92,9 @@
             android:id="@+id/rate_post_frag_headline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
             android:text="TextView"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/rate_post_frag_star2"
             app:layout_constraintStart_toStartOf="@+id/rate_post_frag_star2"
             app:layout_constraintTop_toBottomOf="@+id/rate_post_frag_star2" />
@@ -83,7 +103,9 @@
             android:id="@+id/rate_post_frag_headline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
             android:text="TextView"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/rate_post_frag_star3"
             app:layout_constraintStart_toStartOf="@+id/rate_post_frag_star3"
             app:layout_constraintTop_toBottomOf="@+id/rate_post_frag_star3" />
@@ -118,12 +140,13 @@
             android:id="@+id/rate_post_frag_savebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
             android:text="save"
             app:backgroundTint="@color/grayish_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/rate_post_frag_cancelbtn"
-            tools:layout_editor_absoluteY="597dp" />
+            app:layout_constraintTop_toBottomOf="@+id/rate_post_frag_headline3" />
 
         <Button
             android:id="@+id/rate_post_frag_cancelbtn"

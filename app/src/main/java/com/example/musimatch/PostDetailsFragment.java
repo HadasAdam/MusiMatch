@@ -88,6 +88,12 @@ public class PostDetailsFragment extends Fragment {
         linkedPosts.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_postDetailsFragment_to_linkPostFragment);
         });
+
+        rate.setOnClickListener(v -> {
+            PostDetailsFragmentDirections.ActionPostDetailsFragmentToRatePostFragment action =
+                    PostDetailsFragmentDirections.actionPostDetailsFragmentToRatePostFragment(post);
+            Navigation.findNavController(view).navigate(action);
+        });
     }
 
     private void initializeComments(Post post) {
