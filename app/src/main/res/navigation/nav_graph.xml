@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_postDetailsFragment_to_linkPostFragment"
             app:destination="@id/linkPostFragment" />
+        <action
+            android:id="@+id/action_postDetailsFragment_to_ratePostFragment"
+            app:destination="@id/ratePostFragment" />
     </fragment>
     <fragment
         android:id="@+id/linkPostFragment"
@@ -37,5 +40,17 @@
         <action
             android:id="@+id/action_linkPostFragment_to_postDetailsFragment"
             app:destination="@id/postDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ratePostFragment"
+        android:name="com.example.musimatch.RatePostFragment"
+        android:label="fragment_rate_post"
+        tools:layout="@layout/fragment_rate_post" >
+        <action
+            android:id="@+id/action_ratePostFragment_to_postDetailsFragment"
+            app:destination="@id/postDetailsFragment" />
+        <argument
+            android:name="post"
+            app:argType="com.example.musimatch.models.Post" />
     </fragment>
 </navigation>
