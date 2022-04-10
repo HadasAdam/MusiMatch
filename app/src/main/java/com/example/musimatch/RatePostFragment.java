@@ -1,64 +1,167 @@
 package com.example.musimatch;
 
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RatePostFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.musimatch.models.Post;
+import com.example.musimatch.models.UserModel;
+
 public class RatePostFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = "RatePostFragment";
+    private static final int MIN_RATE_VALUE = 1;
+    private static final int MAX_RATE_VALUE = 5;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    View view;
+    Post post;
+    Button saveButton;
+    Button cancelButton;
+
+    TextView rate1star;
+    TextView rate1title;
+    SeekBar rate1slider;
+
+    TextView rate2star;
+    TextView rate2title;
+    SeekBar rate2slider;
+
+    TextView rate3star;
+    TextView rate3title;
+    SeekBar rate3slider;
+
 
     public RatePostFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RatePostFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RatePostFragment newInstance(String param1, String param2) {
-        RatePostFragment fragment = new RatePostFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rate_post, container, false);
+        view = inflater.inflate(R.layout.fragment_rate_post,container, false);
+        post = PostDetailsFragmentArgs.fromBundle(getArguments()).getPost();
+        linkComponents();
+        initializeComponent();
+        return view;
+    }
+
+    private void linkComponents()
+    {
+        saveButton = view.findViewById(R.id.rate_post_frag_savebtn);
+        cancelButton = view.findViewById(R.id.rate_post_frag_cancelbtn);
+
+        rate1star = view.findViewById(R.id.rate_post_frag_star1);
+        rate1title = view.findViewById(R.id.rate_post_frag_headline1);
+        rate1slider = view.findViewById(R.id.rate_post_frag_seekbar1);
+
+        rate2star = view.findViewById(R.id.rate_post_frag_star2);
+        rate2title = view.findViewById(R.id.rate_post_frag_headline2);
+        rate2slider = view.findViewById(R.id.rate_post_frag_seekbar2);
+
+        rate3star = view.findViewById(R.id.rate_post_frag_star3);
+        rate3title = view.findViewById(R.id.rate_post_frag_headline3);
+        rate3slider = view.findViewById(R.id.rate_post_frag_seekbar3);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void initializeComponent()
+    {
+        saveButton.setOnClickListener(v -> save());
+        cancelButton.setOnClickListener(v -> cancel());
+
+        initializeRate1();
+        initializeRate2();
+        initializeRate3();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void initializeRate1()
+    {
+        rate1slider.setMin(MIN_RATE_VALUE);
+        rate1slider.setMax(MAX_RATE_VALUE);
+        rate1star.setText(String.valueOf(rate1slider.getProgress()));
+        rate1slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                rate1star.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) { }
+        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void initializeRate2()
+    {
+        rate2slider.setMin(MIN_RATE_VALUE);
+        rate2slider.setMax(MAX_RATE_VALUE);
+        rate2star.setText(String.valueOf(rate2slider.getProgress()));
+        rate2slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                rate2star.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) { }
+        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void initializeRate3()
+    {
+        rate3slider.setMin(MIN_RATE_VALUE);
+        rate3slider.setMax(MAX_RATE_VALUE);
+        rate3star.setText(String.valueOf(rate3slider.getProgress()));
+        rate3slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                rate3star.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) { }
+        });
+    }
+
+    private void save()
+    {
+        //TODO: SAVE THE RATE
+        RatePostFragmentDirections.ActionRatePostFragmentToPostDetailsFragment action =
+                RatePostFragmentDirections.actionRatePostFragmentToPostDetailsFragment(post);
+        Navigation.findNavController(view).navigate(action);
+    }
+
+    private void cancel()
+    {
+        RatePostFragmentDirections.ActionRatePostFragmentToPostDetailsFragment action =
+                RatePostFragmentDirections.actionRatePostFragmentToPostDetailsFragment(post);
+        Navigation.findNavController(view).navigate(action);
     }
 }
