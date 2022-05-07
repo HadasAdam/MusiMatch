@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">MusiMatch</string>
+    <string name="default_sign_in_name_display">לא מחובר</string>
+
+    <string name="sign_in">לא מחובר</string>
+    <string name="sign_out">לא מחובר</string>
+
     <string name="israel_israeli">Israel Israeli</string>
     <string name="log_out">Log out</string>
     <string name="composer">Composer</string>
@@ -23,6 +28,7 @@
 
 
     <string name="post">Post</string>
+    <string name="the_default_web_client_id" translatable="false">797942919400-5jc0m6ccosn27giqbdmhbvelm84j4k52.apps.googleusercontent.com</string>
 
     <string-array name="postTypeSpinner">
         <item>Song</item>
