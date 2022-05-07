@@ -62,11 +62,11 @@ public class LoginService {
             loginService = new LoginService();
 
             if (loginService.getGoogleSignInClient() == null) {
-//                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                        .requestIdToken(context.getString(R.string.default_web_client_id))
-//                        .requestEmail()
-//                        .build();
-//                loginService.setGoogleSignInClient(GoogleSignIn.getClient(context, gso));
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(context.getString(R.string.the_default_web_client_id))
+                        .requestEmail()
+                        .build();
+                loginService.setGoogleSignInClient(GoogleSignIn.getClient(context, gso));
                 loginService.setGoogleAccount(GoogleSignIn.getLastSignedInAccount(context));
             }
 
