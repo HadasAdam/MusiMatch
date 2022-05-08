@@ -28,7 +28,7 @@
 
 
     <string name="post">Post</string>
-    <string name="the_default_web_client_id" translatable="false">797942919400-5jc0m6ccosn27giqbdmhbvelm84j4k52.apps.googleusercontent.com</string>
+    <string name="the_default_web_client_id" translatable="false">1024298745200-45qq75i1p8dc2ionl3utmf86r2vcv1a1.apps.googleusercontent.com</string>
 
     <string-array name="postTypeSpinner">
         <item>Song</item>
