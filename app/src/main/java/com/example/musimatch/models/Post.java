@@ -7,40 +7,42 @@ import java.util.ArrayList;
 
 @Entity
 public class Post implements Serializable {
-    private String id;
+    private Long id;
     private String title;
     private String poemLyrics;
     private String melodyFilePath;
-    private String uploaderId;
+    private User creator;
     private PostType postType;
     private Double averagePostRate;
-    private ArrayList<String> linkedPostsIds = new ArrayList<>();
-    private ArrayList<String> commentsIds = new ArrayList<>();
-    private ArrayList<String> tags = new ArrayList<>();
-    // TODO: ADD SerialRater[] serialRaters;
+
+    private ArrayList<Post> linkedPosts = new ArrayList<>();
+    private ArrayList<Comment> comments = new ArrayList<>();
+    private ArrayList<Tag> tags = new ArrayList<>();
+    private ArrayList<SerialRater> serialRaters = new ArrayList<>();
 
     public Post() { }
 
-    public Post(String id, String title, String poemLyrics, String melodyFilePath, String uploaderId,
-                PostType postType, Double averagePostRate, ArrayList<String> linkedPostsIds, ArrayList<String> commentsIds,
-                ArrayList<String> tags) {
+    public Post(Long id, String title, String poemLyrics, String melodyFilePath, User creator,
+                PostType postType, Double averagePostRate, ArrayList<Post> linkedPosts, ArrayList<Comment> comments,
+                ArrayList<Tag> tags, ArrayList<SerialRater> serialRaters) {
         this.id = id;
         this.title = title;
         this.poemLyrics = poemLyrics;
         this.melodyFilePath = melodyFilePath;
-        this.uploaderId = uploaderId;
+        this.creator = creator;
         this.postType = postType;
         this.averagePostRate = averagePostRate;
-        this.linkedPostsIds = linkedPostsIds;
-        this.commentsIds = commentsIds;
+        this.linkedPosts = linkedPosts;
+        this.comments = comments;
         this.tags = tags;
+        this.serialRaters = serialRaters;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -76,28 +78,12 @@ public class Post implements Serializable {
         this.postType = postType;
     }
 
-    public String getUploaderId() {
-        return uploaderId;
+    public User getCreator() {
+        return creator;
     }
 
-    public void setUploaderId(String uploaderId) {
-        this.uploaderId = uploaderId;
-    }
-
-    public ArrayList<String> getLinkedPostsIds() {
-        return linkedPostsIds;
-    }
-
-    public void setLinkedPostsIds(ArrayList<String> linkedPostsIds) {
-        this.linkedPostsIds = linkedPostsIds;
-    }
-
-    public ArrayList<String> getTags() {
-        return tags;
-    }
-
-    public void setTags(ArrayList<String> tags) {
-        this.tags = tags;
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 
     public Double getAveragePostRate() {
@@ -108,11 +94,55 @@ public class Post implements Serializable {
         this.averagePostRate = averagePostRate;
     }
 
-    public ArrayList<String> getCommentsIds() {
-        return commentsIds;
+    public ArrayList<Comment> getComments() {
+        return comments;
     }
 
-    public void setCommentsIds(ArrayList<String> commentsIds) {
-        this.commentsIds = commentsIds;
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public ArrayList<Post> getLinkedPosts() {
+        return linkedPosts;
+    }
+
+    public void setLinkedPosts(ArrayList<Post> linkedPosts) {
+        this.linkedPosts = linkedPosts;
+    }
+
+    public ArrayList<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(ArrayList<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public ArrayList<SerialRater> getSerialRaters() {
+        return serialRaters;
+    }
+
+    public void setSerialRaters(ArrayList<SerialRater> serialRaters) {
+        this.serialRaters = serialRaters;
+    }
+
+    public void addComment(Comment comment)
+    {
+        this.comments.add(comment);
+    }
+
+    public void addTag(Tag tag)
+    {
+        this.tags.add(tag);
+    }
+
+    public void addLinkedPost(Post postToLink)
+    {
+        this.linkedPosts.add(postToLink);
+    }
+
+    public void addSerialRater(SerialRater serialRater)
+    {
+        this.serialRaters.add(serialRater);
     }
 }

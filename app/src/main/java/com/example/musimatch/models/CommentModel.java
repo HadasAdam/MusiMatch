@@ -1,5 +1,6 @@
 package com.example.musimatch.models;
 
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,14 +18,10 @@ public class CommentModel {
         return comments;
     }
 
-    public void createComment(Comment comment) {
-        comments.add(comment);
-    }
-
-    public Comment findCommentById(String id) {
+    public Comment findCommentById(Long id) {
         for (Comment comment : comments)
         {
-            if(comment.getId().equals(id))
+            if(comment.getId() == (long)id)
             {
                 return comment;
             }
@@ -32,28 +29,17 @@ public class CommentModel {
         return null;
     }
 
-    public ArrayList<Comment> getCommentsByPostId(String postId) {
-        ArrayList<Comment> commentsOfPost = new ArrayList<>();
-        for(Comment comment : comments)
-        {
-            if(comment.getPostId().endsWith(postId))
-            {
-                commentsOfPost.add(comment);
-            }
-        }
-        return commentsOfPost;
-    }
-
     private void initializeCommentsList()
     {
-        for(int i = 0; i < 10; i++)
+        ArrayList<Post> posts = PostModel.instance.getAllPosts();
+        for(int i = 0; i < posts.size(); i++)
         {
-            comments.add(new Comment(String.valueOf(i), String.valueOf(i%2),String.valueOf(i),"Love it! " + i , new Date()));
-        }
-
-        for(int i = 10; i < 40; i++)
-        {
-            comments.add(new Comment(String.valueOf(i), String.valueOf(i%3),String.valueOf(i),"Nahh! " + i , new Date()));
+            for(int j = 0; j < 4; j++)
+            {
+                Comment comment = new Comment((long)(i*10+j), UserModel.instance.findUserById(String.valueOf(i%2)), posts.get(i),"Comment "+(i*10+j), new Date());
+                comments.add(comment);
+                posts.get(i).addComment(comment);
+            }
         }
     }
 }

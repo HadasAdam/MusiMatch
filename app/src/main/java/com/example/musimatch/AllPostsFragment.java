@@ -41,7 +41,7 @@ public class AllPostsFragment extends Fragment {
         adapter.setOnClickListener(new PostAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                String postId = postsArrayList.get(position).getId();
+                Long postId = postsArrayList.get(position).getId();
                 //TODO: Navigate to post details
             }
         });
