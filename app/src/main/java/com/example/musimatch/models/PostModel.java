@@ -20,10 +20,10 @@ public class PostModel {
         posts.add(post);
     }
 
-    public Post findPostById(String id) {
+    public Post findPostById(Long id) {
         for (Post post : posts)
         {
-            if(post.getId().equals(id))
+            if(post.getId() == (long)id)
             {
                 return post;
             }
@@ -35,7 +35,7 @@ public class PostModel {
         ArrayList<Post> relevantPosts = new ArrayList<>();
         for (Post post : posts)
         {
-            if(post.getUploaderId().equals(userId))
+            if(post.getCreator().getId().equals(userId))
             {
                 relevantPosts.add(post);
             }
@@ -47,7 +47,7 @@ public class PostModel {
         ArrayList<Post> relevantPosts = new ArrayList<>();
         for (Post post : posts)
         {
-            if(post.getUploaderId().equals(userId) && post.getPostType() == postType)
+            if(post.getCreator().getId().equals(userId) && post.getPostType() == postType)
             {
                 relevantPosts.add(post);
             }
@@ -59,8 +59,9 @@ public class PostModel {
     {
         for(int i = 0; i < 10; i++)
         {
-            posts.add(new Post(String.valueOf(i), "Post" + i, "I love cats\nThey are so cute\nI want to have one",
-                    "", String.valueOf(i), PostType.POEM, 0d, null, null, null));
+            posts.add(new Post((long)i, "Post" + i, "I love cats\nThey are so cute\nI want to have one",
+                    "", UserModel.instance.findUserById(String.valueOf(i)),
+                    PostType.POEM, 0d,null, null, null,null));
         }
     }
 }

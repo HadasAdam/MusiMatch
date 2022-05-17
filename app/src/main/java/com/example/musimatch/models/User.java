@@ -1,5 +1,8 @@
 package com.example.musimatch.models;
 
+import androidx.room.Entity;
+
+@Entity
 public class User {
     private String id;
     private String username;
