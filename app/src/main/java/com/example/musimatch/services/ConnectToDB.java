@@ -25,7 +25,7 @@ public class ConnectToDB {
             try {
                 Class.forName("net.sourceforge.jtds.jdbc.Driver");
 //                ConnectionUrl = "jdbc:jtds:sqlserver://"+ ip + ":"+ port+";"+
-//                        "databasename="+ database+";user="+username+";password="+pass+";";
+//                       "databasename="+ database+";user="+username+";password="+pass+";";
                 ConnectionUrl = "jdbc:mysql:bamba.cs.colman.ac.il:3306/MusiMatch";
                 connection = DriverManager.getConnection(ConnectionUrl, username, pass );
             } catch (Exception ex) {
