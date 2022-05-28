@@ -1,4 +1,4 @@
-package com.example.musimatch.models;
+package com.example.musimatch.models.enums;
 
 public enum TagGroup {
     NONE,

@@ -1,5 +1,7 @@
 package com.example.musimatch.models;
 
+import com.example.musimatch.models.enums.PostType;
+
 import java.util.ArrayList;
 
 public class PostModel {
