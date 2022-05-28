@@ -2,6 +2,8 @@ package com.example.musimatch.models;
 
 import androidx.room.Entity;
 
+import com.example.musimatch.models.enums.TagGroup;
+
 @Entity
 public class Tag {
     private Long id;
