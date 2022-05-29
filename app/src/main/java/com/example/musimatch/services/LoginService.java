@@ -54,6 +54,14 @@ public class LoginService {
         return getFirebaseAuth().getCurrentUser();
     }
 
+    public User getUser() {
+        FirebaseUser firebaseUser = getFirebaseUser();
+        if(firebaseUser == null)
+            return null;
+        else
+            return UserModel.instance.findUserByUsername(firebaseUser.getDisplayName());
+    }
+
     private LoginService() {
     }
 

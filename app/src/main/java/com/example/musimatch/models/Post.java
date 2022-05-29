@@ -1,7 +1,11 @@
 package com.example.musimatch.models;
 
+import android.util.Log;
+
 import androidx.room.Entity;
 
+import com.example.musimatch.models.enums.MelodyRateSections;
+import com.example.musimatch.models.enums.PoemRateSections;
 import com.example.musimatch.models.enums.PostType;
 
 import java.io.Serializable;
@@ -15,6 +19,7 @@ public class Post implements Serializable {
     private String melodyFilePath;
     private User creator;
     private PostType postType;
+    private AverageRater averageRater;
     private Double averagePostRate;
 
     private ArrayList<Post> linkedPosts = new ArrayList<>();
@@ -22,10 +27,14 @@ public class Post implements Serializable {
     private ArrayList<Tag> tags = new ArrayList<>();
     private ArrayList<SerialRater> serialRaters = new ArrayList<>();
 
-    public Post() { }
+    public Post() {
+        this.postType = PostType.POEM;
+        this.averageRater = new AverageRater();
+        this.averagePostRate = 0D;
+    }
 
     public Post(Long id, String title, String poemLyrics, String melodyFilePath, User creator,
-                PostType postType, Double averagePostRate, ArrayList<Post> linkedPosts, ArrayList<Comment> comments,
+                PostType postType, ArrayList<Post> linkedPosts, ArrayList<Comment> comments,
                 ArrayList<Tag> tags, ArrayList<SerialRater> serialRaters) {
         this.id = id;
         this.title = title;
@@ -33,11 +42,17 @@ public class Post implements Serializable {
         this.melodyFilePath = melodyFilePath;
         this.creator = creator;
         this.postType = postType;
-        this.averagePostRate = averagePostRate;
+        this.averageRater = new AverageRater();
+        this.averagePostRate = 0D;
         this.linkedPosts = linkedPosts;
         this.comments = comments;
         this.tags = tags;
         this.serialRaters = serialRaters;
+
+        if(this.postType == null)
+        {
+            this.postType = PostType.POEM;
+        }
     }
 
     public Long getId() {
@@ -126,6 +141,7 @@ public class Post implements Serializable {
 
     public void setSerialRaters(ArrayList<SerialRater> serialRaters) {
         this.serialRaters = serialRaters;
+        updateAverageRater();
     }
 
     public void addComment(Comment comment)
@@ -146,5 +162,49 @@ public class Post implements Serializable {
     public void addSerialRater(SerialRater serialRater)
     {
         this.serialRaters.add(serialRater);
+        updateAverageRater();
+    }
+
+    public void addSerialRaters(ArrayList<SerialRater> serialRaters)
+    {
+        this.serialRaters.addAll(serialRaters);
+        updateAverageRater();
+    }
+
+    public void updateAverageRater()
+    {
+        final int FIRST_RATER_INDEX = 0;
+        final int SECOND_RATER_INDEX = 1;
+        final int THIRD_RATER_INDEX = 2;
+
+        int[] counters = {0, 0, 0};
+        int[] sums = {0, 0, 0};
+        for(int i = 0; i < serialRaters.size(); i++)
+        {
+            SerialRater currentSerialRater = serialRaters.get(i);
+            if(currentSerialRater.poemRateSections.equals(PoemRateSections.DEPT) ||
+                    currentSerialRater.melodyRateSections.equals(MelodyRateSections.RHYTHM))
+            {
+                counters[FIRST_RATER_INDEX]++;
+                sums[FIRST_RATER_INDEX]+=currentSerialRater.getValue();
+            }
+            else if(currentSerialRater.poemRateSections.equals(PoemRateSections.RHYMES) ||
+                    currentSerialRater.melodyRateSections.equals(MelodyRateSections.QUALITY))
+            {
+                counters[SECOND_RATER_INDEX]++;
+                sums[SECOND_RATER_INDEX]+=currentSerialRater.getValue();
+            }
+
+            else if(currentSerialRater.poemRateSections.equals(PoemRateSections.LANGUAGE) ||
+                    currentSerialRater.melodyRateSections.equals(MelodyRateSections.UNIQUENESS))
+            {
+                counters[THIRD_RATER_INDEX]++;
+                sums[THIRD_RATER_INDEX]+=currentSerialRater.getValue();
+            }
+        }
+
+        averageRater.setRaterSection1((double) (sums[FIRST_RATER_INDEX]/counters[FIRST_RATER_INDEX]));
+        averageRater.setRaterSection2((double) (sums[SECOND_RATER_INDEX]/counters[SECOND_RATER_INDEX]));
+        averageRater.setRaterSection3((double) (sums[THIRD_RATER_INDEX]/counters[THIRD_RATER_INDEX]));
     }
 }
