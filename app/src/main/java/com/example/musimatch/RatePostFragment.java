@@ -22,13 +22,19 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.musimatch.models.Post;
+import com.example.musimatch.models.SerialRater;
 import com.example.musimatch.models.UserModel;
+import com.example.musimatch.models.enums.MelodyRateSections;
+import com.example.musimatch.models.enums.PoemRateSections;
 import com.example.musimatch.services.LoginService;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RatePostFragment extends Fragment {
 
@@ -101,6 +107,7 @@ public class RatePostFragment extends Fragment {
         initializeRate1();
         initializeRate2();
         initializeRate3();
+        initializeRatersTitles();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -163,9 +170,147 @@ public class RatePostFragment extends Fragment {
         });
     }
 
+    private void initializeRatersTitles()
+    {
+        switch (post.getPostType())
+        {
+            case POEM:
+                rate1title.setText(PoemRateSections.DEPT.name());
+                rate2title.setText(PoemRateSections.RHYMES.name());
+                rate3title.setText(PoemRateSections.LANGUAGE.name());
+                break;
+            case MELODY:
+                rate1title.setText(MelodyRateSections.RHYTHM.name());
+                rate2title.setText(MelodyRateSections.QUALITY.name());
+                rate3title.setText(MelodyRateSections.UNIQUENESS.name());
+        }
+    }
+
+    private HashMap<PoemRateSections, TextView> linkStarsToPoemRateSections()
+    {
+        HashMap<PoemRateSections, TextView> poemRateSectionsMap = new HashMap();
+        poemRateSectionsMap.put(PoemRateSections.DEPT, rate1star);
+        poemRateSectionsMap.put(PoemRateSections.RHYMES, rate2star);
+        poemRateSectionsMap.put(PoemRateSections.LANGUAGE, rate3star);
+        return poemRateSectionsMap;
+    }
+
+    private HashMap<MelodyRateSections, TextView> linkStarsToMelodyRateSections()
+    {
+        HashMap<MelodyRateSections, TextView> poemRateSectionsMap = new HashMap();
+        poemRateSectionsMap.put(MelodyRateSections.RHYTHM, rate1star);
+        poemRateSectionsMap.put(MelodyRateSections.QUALITY, rate2star);
+        poemRateSectionsMap.put(MelodyRateSections.UNIQUENESS, rate3star);
+        return poemRateSectionsMap;
+    }
+
     private void save()
     {
-        //TODO: SAVE THE RATE
+        if(LoginService.getInstance(getContext()).getFirebaseUser() != null)
+        {
+           switch (post.getPostType())
+           {
+               case POEM:
+                   savePoemRates();
+                   break;
+               case MELODY:
+                   saveMelodyRates();
+                   break;
+           }
+           navigateToDetailsFragment();
+        }
+        else {
+            //TODO: THROW MESSAGE: "You have to login first!"
+            Log.d(TAG,"No user is connected");
+        }
+    }
+
+    private void savePoemRates()
+    {
+        boolean userAlreadyRatedThisPost = false;
+        ArrayList<SerialRater> serialRatersOfPost = post.getSerialRaters();
+        HashMap<PoemRateSections, TextView> ratersMap = linkStarsToPoemRateSections();
+
+        for(int i = 0; i < serialRatersOfPost.size(); i++)
+        {
+            if(serialRatersOfPost.get(i).getUserWhoRated().equals(LoginService.getInstance(getContext()).getFirebaseUser()))
+            {
+                userAlreadyRatedThisPost = true;
+                serialRatersOfPost.get(i).setValue(Integer.valueOf(ratersMap.get(serialRatersOfPost.get(i).getPoemRateSections()).getText().toString()));
+            }
+        }
+
+        if(!userAlreadyRatedThisPost)
+        {
+            addNewPoemSerialRaters();
+        }
+    }
+
+    private void addNewPoemSerialRaters()
+    {
+        ArrayList<SerialRater> serialRatersToAdd = new ArrayList<>();
+        serialRatersToAdd.add(new SerialRater(0L,
+                PoemRateSections.DEPT,
+                null,
+                Integer.valueOf(rate1star.getText().toString()),
+                LoginService.getInstance(getContext()).getUser()));
+        serialRatersToAdd.add(new SerialRater(1L,
+                PoemRateSections.RHYMES,
+                null,
+                Integer.valueOf(rate2star.getText().toString()),
+                LoginService.getInstance(getContext()).getUser()));
+        serialRatersToAdd.add(new SerialRater(1L,
+                PoemRateSections.LANGUAGE,
+                null,
+                Integer.valueOf(rate3star.getText().toString()),
+                LoginService.getInstance(getContext()).getUser()));
+        post.addSerialRaters(serialRatersToAdd);
+    }
+
+    private void saveMelodyRates()
+    {
+        boolean userAlreadyRatedThisPost = false;
+        ArrayList<SerialRater> serialRatersOfPost = post.getSerialRaters();
+        HashMap<MelodyRateSections, TextView> ratersMap = linkStarsToMelodyRateSections();
+
+        for(int i = 0; i < serialRatersOfPost.size(); i++)
+        {
+            if(serialRatersOfPost.get(i).getUserWhoRated().equals(LoginService.getInstance(getContext()).getFirebaseUser()))
+            {
+                userAlreadyRatedThisPost = true;
+                serialRatersOfPost.get(i).setValue(Integer.valueOf(ratersMap.get(serialRatersOfPost.get(i).getPoemRateSections()).getText().toString()));
+            }
+        }
+
+        if(!userAlreadyRatedThisPost)
+        {
+            addNewMelodySerialRaters();
+        }
+    }
+
+    private void addNewMelodySerialRaters()
+    {
+        ArrayList<SerialRater> serialRatersToAdd = new ArrayList<>();
+        serialRatersToAdd.add(new SerialRater(0L,
+                null,
+                MelodyRateSections.RHYTHM,
+                Integer.valueOf(rate1star.getText().toString()),
+                LoginService.getInstance(getContext()).getUser()));
+        serialRatersToAdd.add(new SerialRater(1L,
+                null,
+                MelodyRateSections.QUALITY,
+                Integer.valueOf(rate2star.getText().toString()),
+                LoginService.getInstance(getContext()).getUser()));
+        serialRatersToAdd.add(new SerialRater(1L,
+                null,
+                MelodyRateSections.UNIQUENESS,
+                Integer.valueOf(rate3star.getText().toString()),
+                LoginService.getInstance(getContext()).getUser()));
+        post.addSerialRaters(serialRatersToAdd);
+    }
+
+    private void navigateToDetailsFragment()
+    {
         RatePostFragmentDirections.ActionRatePostFragmentToPostDetailsFragment action =
                 RatePostFragmentDirections.actionRatePostFragmentToPostDetailsFragment(post);
         Navigation.findNavController(view).navigate(action);

@@ -63,7 +63,7 @@ public class PostModel {
         {
             posts.add(new Post((long)i, "Post" + i, "I love cats\nThey are so cute\nI want to have one",
                     "", UserModel.instance.findUserById(String.valueOf(i)),
-                    PostType.POEM, 0d,null, null, null,null));
+                    PostType.POEM,null, null, null,null));
         }
     }
 }
