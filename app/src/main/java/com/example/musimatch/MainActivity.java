@@ -24,8 +24,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,21 +83,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private Executor executor = Executors.newSingleThreadExecutor();
+
     @SuppressLint("NewApi")
     private void testDB() {
-        try {
-            ConnectToDB connectToDB = new ConnectToDB();
-            connect = connectToDB.connectionClass();
-            if (connect != null) {
-//                String query = "Select * from 'Users'";
-//                Statement st = connect.createStatement();
-                Log.d("Connect", "connect to db");
-            } else {
-                Log.d("Connect", "can't connect to db - check connection");
+        executor.execute(() -> {
+            try {
+                ConnectToDB connectToDB = new ConnectToDB();
+                connect = connectToDB.connectionClass();
+                if (connect != null) {
+                    String query = "Select * from Users;";
+                    Statement st = connect.createStatement();
+                    ResultSet resultSet = st.executeQuery(query);
+//                Log.d("Connect", "connect to db");
+                    if(resultSet.next()){
+                        Log.d(TAG, resultSet.getString("first_name"));
+                    }
+                } else {
+                    Log.d("Connect", "can't connect to db - check connection");
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "testDB: ", e);
+
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Override
@@ -139,13 +151,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void signIn() {
-        Log.d(TAG,"Trying to sign in...");
+        Log.d(TAG, "Trying to sign in...");
         Intent signInIntent = LoginService.getInstance(this).getGoogleSignInClient().getSignInIntent();
         startActivityForResult(signInIntent, LoginService.RC_SIGN_IN);
     }
 
     private void signOut() {
-        Log.d(TAG,"Trying to sign out...");
+        Log.d(TAG, "Trying to sign out...");
         LoginService.getInstance(this).signOut();
         setSignedInView(this.getString(R.string.default_sign_in_name_display), false);
     }
