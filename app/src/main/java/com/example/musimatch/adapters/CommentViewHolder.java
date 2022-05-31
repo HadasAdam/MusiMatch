@@ -31,7 +31,7 @@ public class CommentViewHolder extends RecyclerView.ViewHolder {
 
     public void bindData(Comment comment, int position) {
         currentComment = comment;
-        commentUploader.setText(UserModel.instance.findUserById(comment.getUserId()).getUsername());
+        commentUploader.setText(comment.getUser().getUsername());
         commentContent.setText(comment.getContent());
         this.position = position;
     }

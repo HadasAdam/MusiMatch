@@ -55,8 +55,8 @@ public class LinkPostFragment extends Fragment {
     private void linkPostToPost(Post myPost, Post destinationPost) {
         if(!myPost.getId().equals(destinationPost.getId()))
         {
-            myPost.getLinkedPostsIds().add(destinationPost.getId());
-            destinationPost.getLinkedPostsIds().add(myPost.getId());
+            myPost.getLinkedPosts().add(destinationPost);
+            destinationPost.getLinkedPosts().add(myPost);
         }
     }
 }

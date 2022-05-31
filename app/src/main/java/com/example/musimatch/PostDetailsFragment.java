@@ -1,34 +1,17 @@
 package com.example.musimatch;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.musimatch.adapters.CommentAdapter;
 import com.example.musimatch.models.Comment;
-import com.example.musimatch.models.CommentModel;
 import com.example.musimatch.models.Post;
-import com.example.musimatch.models.UserModel;
-import com.example.musimatch.services.LoginService;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 
 import java.util.ArrayList;
 
@@ -96,10 +79,10 @@ public class PostDetailsFragment extends Fragment {
     {
         postTitle.setText(post.getTitle());
         postLyrics.setText(post.getPoemLyrics() != null ? post.getPoemLyrics() + "" : "");
-        linkedPosts.setText(post.getLinkedPostsIds() != null ? post.getLinkedPostsIds().size() + "" : "0");
-        comments.setText(post.getCommentsIds() != null ? post.getCommentsIds().size() + "" : "");
+        linkedPosts.setText(post.getLinkedPosts() != null ? post.getLinkedPosts().size() + "" : "0");
+        comments.setText(post.getComments() != null ? post.getComments().size() + "" : "");
         rate.setText(String.valueOf(post.getAveragePostRate()));
-        uploaderUsername.setText(UserModel.instance.findUserById(post.getUploaderId()).getUsername());
+        uploaderUsername.setText(post.getCreator().getUsername());
 
         linkedPosts.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_postDetailsFragment_to_linkPostFragment);
@@ -113,14 +96,16 @@ public class PostDetailsFragment extends Fragment {
     }
 
     private void initializeComments(Post post) {
-        commentsArrayList = new ArrayList<Comment>(CommentModel.instance.getCommentsByPostId(post.getId()));
+        commentsArrayList = post.getComments();
         RecyclerView recyclerView = view.findViewById(R.id.PostDetails_recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(linearLayoutManager);
         LayoutInflater layoutInflater = getLayoutInflater();
+
+        // TODO: find a way to initialize the comments properly
         CommentAdapter adapter = new CommentAdapter(layoutInflater);
-        recyclerView.setAdapter(adapter);
         adapter.setData(commentsArrayList);
+        recyclerView.setAdapter(adapter);
     }
 }

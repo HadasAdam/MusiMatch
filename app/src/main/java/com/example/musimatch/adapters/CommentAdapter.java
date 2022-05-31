@@ -13,7 +13,7 @@ import com.example.musimatch.models.CommentModel;
 import java.util.List;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
-    public List<Comment> data = CommentModel.instance.getAllComments();
+    public List<Comment> data;
     LayoutInflater inflater;
     View view;
     private CommentAdapter.OnItemClickListener onItemClickListener;

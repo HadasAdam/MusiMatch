@@ -1,46 +1,49 @@
 package com.example.musimatch.models;
 
+import androidx.room.Entity;
+
 import java.util.Date;
 
+@Entity
 public class Comment {
-    private String id;
-    private String userId;
-    private String postId;
+    private Long id;
+    private User user;
+    private Post post;
     private String content;
     private Date commentUploadTime;
 
     public Comment(){}
 
-    public Comment(String id, String userId, String postId, String content, Date commentUploadTime) {
+    public Comment(Long id, User user, Post post, String content, Date commentUploadTime) {
         this.id = id;
-        this.userId = userId;
-        this.postId = postId;
+        this.user = user;
+        this.post = post;
         this.content = content;
         this.commentUploadTime = commentUploadTime;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getPostId() {
-        return postId;
+    public Post getPost() {
+        return post;
     }
 
-    public void setPostId(String postId) {
-        this.postId = postId;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public String getContent() {
