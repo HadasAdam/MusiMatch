@@ -3,18 +3,16 @@ package com.example.musimatch.services;
 import android.os.StrictMode;
 import android.util.Log;
 
-import com.example.musimatch.models.PostModel;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ConnectToDB {
+public class ConnectionService {
     Connection connection;
     String username, pass, ip, port, database;
 
-    public final static ConnectToDB instance = new ConnectToDB();
+    public final static ConnectionService instance = new ConnectionService();
 
-    private ConnectToDB() {
+    private ConnectionService() {
         this.connection = connectionClass();
     }
 

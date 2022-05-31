@@ -1,4 +1,4 @@
-package com.example.musimatch.adapters;
+package com.example.musimatch.client.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;

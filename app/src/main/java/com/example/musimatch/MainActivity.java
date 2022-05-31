@@ -3,10 +3,8 @@ package com.example.musimatch;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.Navigation;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.example.musimatch.services.ConnectToDB;
+import com.example.musimatch.services.ConnectionService;
 import com.example.musimatch.services.LoginService;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -25,7 +23,6 @@ import com.google.firebase.auth.AuthResult;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -89,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     private void testDB() {
         executor.execute(() -> {
             try {
-                connect = ConnectToDB.instance.getConnection();
+                connect = ConnectionService.instance.getConnection();
                 if (connect != null) {
                     String query = "Select * from Users;";
                     Statement st = connect.createStatement();
