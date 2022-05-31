@@ -1,4 +1,4 @@
-package com.example.musimatch;
+package com.example.musimatch.client;
 
 import android.content.Intent;
 import android.os.Build;
@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.musimatch.R;
 import com.example.musimatch.models.Post;
 import com.example.musimatch.models.SerialRater;
 import com.example.musimatch.models.UserModel;

@@ -1,17 +1,15 @@
-package com.example.musimatch.adapters;
+package com.example.musimatch.client.adapters;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.navigation.NavAction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musimatch.AllPostsFragmentDirections;
 import com.example.musimatch.R;
+import com.example.musimatch.client.AllPostsFragmentDirections;
 import com.example.musimatch.models.Post;
-import com.example.musimatch.models.UserModel;
 
 public class PostViewHolder extends RecyclerView.ViewHolder {
     public PostAdapter.OnItemClickListener onItemClickListener;

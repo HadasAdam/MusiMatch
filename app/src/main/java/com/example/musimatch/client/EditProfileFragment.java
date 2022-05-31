@@ -1,4 +1,4 @@
-package com.example.musimatch;
+package com.example.musimatch.client;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -7,27 +7,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
+
+import com.example.musimatch.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link NewPostFragment#newInstance} factory method to
+ * Use the {@link EditProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewPostFragment extends Fragment {
+public class EditProfileFragment extends Fragment {
 
-    private static final String TAG = "NewPostFragment";
+    private static final String TAG = "EditProfileFragment";
 
-    EditText titleET;
-    Spinner postTypeSpinner;
-    EditText lyricsET;
-    Spinner firstTag;
-    Spinner secondTag;
-    Spinner thirdTag;
-    Button saveBtn;
+    EditText firstName;
+    EditText lastName;
+    EditText email;
+    EditText phoneNumber;
+    Spinner country;
     Button cancelBtn;
-    ProgressBar progressBar;
+    Button saveBtn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,7 +38,7 @@ public class NewPostFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public NewPostFragment() {
+    public EditProfileFragment() {
         // Required empty public constructor
     }
 
@@ -48,11 +48,11 @@ public class NewPostFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NewPostFragment.
+     * @return A new instance of fragment EditProfileFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NewPostFragment newInstance(String param1, String param2) {
-        NewPostFragment fragment = new NewPostFragment();
+    public static EditProfileFragment newInstance(String param1, String param2) {
+        EditProfileFragment fragment = new EditProfileFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,26 +71,24 @@ public class NewPostFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_new_post, container, false);
-        titleET = view.findViewById(R.id.newPostTitle);
-        postTypeSpinner = view.findViewById(R.id.newPostPostTypeSpinner);
-        lyricsET = view.findViewById(R.id.newPostLyricsMultiLine);
-        firstTag = view.findViewById(R.id.newPostTags1);
-        secondTag = view.findViewById(R.id.newPostTags2);
-        thirdTag = view.findViewById(R.id.newPostTags3);
-        saveBtn = view.findViewById(R.id.newPostSaveButton);
-        cancelBtn = view.findViewById(R.id.newPostCancelButton);
-        progressBar = view.findViewById(R.id.progressBar);
+        View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
+        firstName = view.findViewById(R.id.editProfileFirstName);
+        lastName = view.findViewById(R.id.editProfileLastName);
+        email = view.findViewById(R.id.editProfileEmail);
+        phoneNumber = view.findViewById(R.id.editProfilePhoneNumber);
+        country = view.findViewById(R.id.editProfileSpinner);
+        cancelBtn = view.findViewById(R.id.editProfileCancelBtn);
+        saveBtn = view.findViewById(R.id.editProfileSaveBtn);
         saveBtn.setOnClickListener(v -> onClickSaveButton());
         cancelBtn.setOnClickListener(v -> onClickCancelButton());
         return view;
     }
 
-    private void onClickSaveButton() { // save new post
-        progressBar.setVisibility(View.VISIBLE);
+    private void onClickCancelButton() { // cancel the edit of the profile
+
     }
 
-    private void onClickCancelButton() { // cancel new post
+    private void onClickSaveButton() { // save changes in user profile
 
     }
 }

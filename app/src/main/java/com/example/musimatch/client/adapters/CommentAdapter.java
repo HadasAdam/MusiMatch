@@ -1,4 +1,4 @@
-package com.example.musimatch.adapters;
+package com.example.musimatch.client.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.musimatch.R;
 import com.example.musimatch.models.Comment;
-import com.example.musimatch.models.CommentModel;
 
 
 import java.util.List;

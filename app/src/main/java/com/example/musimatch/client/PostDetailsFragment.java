@@ -1,4 +1,4 @@
-package com.example.musimatch;
+package com.example.musimatch.client;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.example.musimatch.adapters.CommentAdapter;
+
+import com.example.musimatch.R;
+import com.example.musimatch.client.adapters.CommentAdapter;
 import com.example.musimatch.models.Comment;
 import com.example.musimatch.models.Post;
 

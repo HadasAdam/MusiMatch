@@ -1,4 +1,4 @@
-package com.example.musimatch;
+package com.example.musimatch.client;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -9,23 +9,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.musimatch.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link EditProfileFragment#newInstance} factory method to
+ * Use the {@link EditPostFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EditProfileFragment extends Fragment {
+public class EditPostFragment extends Fragment {
 
-    private static final String TAG = "EditProfileFragment";
+    private static final String TAG = "EditPostFragment";
 
-    EditText firstName;
-    EditText lastName;
-    EditText email;
-    EditText phoneNumber;
-    Spinner country;
-    Button cancelBtn;
+    EditText titleET;
+    Spinner postTypeSpinner;
+    EditText lyricsET;
+    Spinner firstTag;
+    Spinner secondTag;
+    Spinner thirdTag;
     Button saveBtn;
+    Button cancelBtn;
+    Button deleteBtn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,7 +39,7 @@ public class EditProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public EditProfileFragment() {
+    public EditPostFragment() {
         // Required empty public constructor
     }
 
@@ -46,11 +49,11 @@ public class EditProfileFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment EditProfileFragment.
+     * @return A new instance of fragment EditPostFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static EditProfileFragment newInstance(String param1, String param2) {
-        EditProfileFragment fragment = new EditProfileFragment();
+    public static EditPostFragment newInstance(String param1, String param2) {
+        EditPostFragment fragment = new EditPostFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -69,24 +72,31 @@ public class EditProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
-        firstName = view.findViewById(R.id.editProfileFirstName);
-        lastName = view.findViewById(R.id.editProfileLastName);
-        email = view.findViewById(R.id.editProfileEmail);
-        phoneNumber = view.findViewById(R.id.editProfilePhoneNumber);
-        country = view.findViewById(R.id.editProfileSpinner);
-        cancelBtn = view.findViewById(R.id.editProfileCancelBtn);
-        saveBtn = view.findViewById(R.id.editProfileSaveBtn);
+        View view = inflater.inflate(R.layout.fragment_edit_post, container, false);
+        titleET = view.findViewById(R.id.editPostTitle);
+        postTypeSpinner = view.findViewById(R.id.editPostPostTypeSpinner);
+        lyricsET = view.findViewById(R.id.editPostLyricsMultiLine);
+        firstTag = view.findViewById(R.id.editPostTags1);
+        secondTag = view.findViewById(R.id.editPostTags2);
+        thirdTag = view.findViewById(R.id.editPostTags3);
+        saveBtn = view.findViewById(R.id.editPostSaveButton);
+        cancelBtn = view.findViewById(R.id.editPostCancelButton);
+        deleteBtn = view.findViewById(R.id.editPostDeleteButton);
         saveBtn.setOnClickListener(v -> onClickSaveButton());
         cancelBtn.setOnClickListener(v -> onClickCancelButton());
+        deleteBtn.setOnClickListener(v -> onClickDeleteButton());
         return view;
     }
 
-    private void onClickCancelButton() { // cancel the edit of the profile
+    private void onClickSaveButton() { // save the edit of the post
 
     }
 
-    private void onClickSaveButton() { // save changes in user profile
+    private void onClickCancelButton() { // cancel the edit of the post
+
+    }
+
+    private void onClickDeleteButton() { // delete the post
 
     }
 }

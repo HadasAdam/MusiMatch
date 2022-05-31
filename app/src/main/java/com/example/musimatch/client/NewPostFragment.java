@@ -1,23 +1,25 @@
-package com.example.musimatch;
+package com.example.musimatch.client;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+
+import com.example.musimatch.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link EditPostFragment#newInstance} factory method to
+ * Use the {@link NewPostFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EditPostFragment extends Fragment {
+public class NewPostFragment extends Fragment {
 
-    private static final String TAG = "EditPostFragment";
+    private static final String TAG = "NewPostFragment";
 
     EditText titleET;
     Spinner postTypeSpinner;
@@ -27,7 +29,7 @@ public class EditPostFragment extends Fragment {
     Spinner thirdTag;
     Button saveBtn;
     Button cancelBtn;
-    Button deleteBtn;
+    ProgressBar progressBar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,7 +40,7 @@ public class EditPostFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public EditPostFragment() {
+    public NewPostFragment() {
         // Required empty public constructor
     }
 
@@ -48,11 +50,11 @@ public class EditPostFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment EditPostFragment.
+     * @return A new instance of fragment NewPostFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static EditPostFragment newInstance(String param1, String param2) {
-        EditPostFragment fragment = new EditPostFragment();
+    public static NewPostFragment newInstance(String param1, String param2) {
+        NewPostFragment fragment = new NewPostFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,31 +73,26 @@ public class EditPostFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_edit_post, container, false);
-        titleET = view.findViewById(R.id.editPostTitle);
-        postTypeSpinner = view.findViewById(R.id.editPostPostTypeSpinner);
-        lyricsET = view.findViewById(R.id.editPostLyricsMultiLine);
-        firstTag = view.findViewById(R.id.editPostTags1);
-        secondTag = view.findViewById(R.id.editPostTags2);
-        thirdTag = view.findViewById(R.id.editPostTags3);
-        saveBtn = view.findViewById(R.id.editPostSaveButton);
-        cancelBtn = view.findViewById(R.id.editPostCancelButton);
-        deleteBtn = view.findViewById(R.id.editPostDeleteButton);
+        View view = inflater.inflate(R.layout.fragment_new_post, container, false);
+        titleET = view.findViewById(R.id.newPostTitle);
+        postTypeSpinner = view.findViewById(R.id.newPostPostTypeSpinner);
+        lyricsET = view.findViewById(R.id.newPostLyricsMultiLine);
+        firstTag = view.findViewById(R.id.newPostTags1);
+        secondTag = view.findViewById(R.id.newPostTags2);
+        thirdTag = view.findViewById(R.id.newPostTags3);
+        saveBtn = view.findViewById(R.id.newPostSaveButton);
+        cancelBtn = view.findViewById(R.id.newPostCancelButton);
+        progressBar = view.findViewById(R.id.progressBar);
         saveBtn.setOnClickListener(v -> onClickSaveButton());
         cancelBtn.setOnClickListener(v -> onClickCancelButton());
-        deleteBtn.setOnClickListener(v -> onClickDeleteButton());
         return view;
     }
 
-    private void onClickSaveButton() { // save the edit of the post
-
+    private void onClickSaveButton() { // save new post
+        progressBar.setVisibility(View.VISIBLE);
     }
 
-    private void onClickCancelButton() { // cancel the edit of the post
-
-    }
-
-    private void onClickDeleteButton() { // delete the post
+    private void onClickCancelButton() { // cancel new post
 
     }
 }
