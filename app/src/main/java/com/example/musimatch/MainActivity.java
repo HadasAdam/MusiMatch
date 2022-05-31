@@ -89,8 +89,7 @@ public class MainActivity extends AppCompatActivity {
     private void testDB() {
         executor.execute(() -> {
             try {
-                ConnectToDB connectToDB = new ConnectToDB();
-                connect = connectToDB.connectionClass();
+                connect = ConnectToDB.instance.getConnection();
                 if (connect != null) {
                     String query = "Select * from Users;";
                     Statement st = connect.createStatement();

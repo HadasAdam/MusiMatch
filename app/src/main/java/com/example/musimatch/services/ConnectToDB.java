@@ -3,14 +3,26 @@ package com.example.musimatch.services;
 import android.os.StrictMode;
 import android.util.Log;
 
+import com.example.musimatch.models.PostModel;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConnectToDB {
-    Connection con;
+    Connection connection;
     String username, pass, ip, port, database;
 
-    public Connection connectionClass() {
+    public final static ConnectToDB instance = new ConnectToDB();
+
+    private ConnectToDB() {
+        this.connection = connectionClass();
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    private Connection connectionClass() {
         ip = "bamba.cs.colman.ac.il";
         database = "MusiMatch";
         username = "cs115";
