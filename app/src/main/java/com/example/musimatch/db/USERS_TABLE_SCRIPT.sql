@@ -8,7 +8,7 @@ create table USERS
     LAST_NAME       VARCHAR2(12),
     AVERAGE_RATE    NUMBER(2,1) DEFAULT 0 not null,
     SPOTIFY_URL     VARCHAR2(100),
-    LAST_UPDATED    TIMESTAMP(6) DEFAULT systimestamp not null
+    CREATION_DATE   TIMESTAMP(6) DEFAULT systimestamp not null
 )
 
 alter table USERS add constraint USERS_PK primary key (ID);
