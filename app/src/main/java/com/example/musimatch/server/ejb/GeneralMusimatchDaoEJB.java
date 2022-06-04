@@ -27,13 +27,7 @@ import java.util.concurrent.Executors;
 
 public class GeneralMusimatchDaoEJB implements GeneralMusimatchDaoInterface, GeneralMusimatchDaoLocal {
     private static final String TAG = "GeneralMusimatchDaoEJB";
-    private Executor executor = Executors.newSingleThreadExecutor();
     private Connection connect = ConnectionService.instance.getConnection();
-
-    @Override
-    public Executor getExecutor() {
-        return executor;
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
