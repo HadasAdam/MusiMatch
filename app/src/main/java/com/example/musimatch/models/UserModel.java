@@ -30,10 +30,10 @@ public class UserModel {
         users.add(user);
     }
 
-    public User findUserById(String id) {
+    public User findUserById(Long id) {
         for (User user : users)
         {
-            if(user.getId().equals(id))
+            if(user.getId() == id)
             {
                 return user;
             }
