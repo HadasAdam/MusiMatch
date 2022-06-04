@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MusiMatch.iml" filepath="$PROJECT_DIR$/.idea/modules/MusiMatch.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MusiMatch.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MusiMatch.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MusiMatch.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MusiMatch.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MusiMatch.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MusiMatch.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MusiMatch.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MusiMatch.app.unitTest.iml" />
     </modules>
   </component>
 </project>

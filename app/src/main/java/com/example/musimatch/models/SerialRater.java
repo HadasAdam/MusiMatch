@@ -11,16 +11,19 @@ public class SerialRater implements Serializable {
     MelodyRateSections melodyRateSections;
     Integer value;
     User userWhoRated;
+    Post postWasRated;
 
     public SerialRater() {}
 
-    public SerialRater(Long id, PoemRateSections poemRateSections, MelodyRateSections melodyRateSections, Integer value, User userWhoRated)
+    public SerialRater(Long id, PoemRateSections poemRateSections, MelodyRateSections melodyRateSections,
+                       Integer value, User userWhoRated, Post postWasRated)
     {
         this.id = id;
         this.poemRateSections = poemRateSections;
         this.melodyRateSections = melodyRateSections;
         this.value = value;
         this.userWhoRated = userWhoRated;
+        this.postWasRated = postWasRated;
     }
 
     public Long getId() {
@@ -64,5 +67,13 @@ public class SerialRater implements Serializable {
 
     public void setUserWhoRated(User userWhoRated) {
         this.userWhoRated = userWhoRated;
+    }
+
+    public Post getPostWasRated() {
+        return postWasRated;
+    }
+
+    public void setPostWasRated(Post postWasRated) {
+        this.postWasRated = postWasRated;
     }
 }

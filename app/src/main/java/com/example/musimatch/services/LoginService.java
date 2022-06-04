@@ -111,8 +111,8 @@ public class LoginService {
 
     public void createNewUser(Task<AuthResult> authResultTask) {
         if (authResultTask.getResult().getAdditionalUserInfo().isNewUser()) {
-            User user = new User();
-            user.setId(authResultTask.getResult().getUser().getUid());
+            User user = new User(); //we want to use sequence for this
+            //user.setId(authResultTask.getResult().getUser().getUid());
             user.setAdmin(false);
             user.setUsername(authResultTask.getResult().getUser().getDisplayName());
 

@@ -48,7 +48,7 @@ public class UserModel {
     {
         for(int i = 0; i < 10; i++)
         {
-            users.add(new User(String.valueOf(i),"user" + i, false, 0d, UserType.POET, "john" + i,
+            users.add(new User((long)i,"user" + i, false, 0d, UserType.POET, "john" + i,
                     "Adams" + i, 0d, ""));
         }
     }

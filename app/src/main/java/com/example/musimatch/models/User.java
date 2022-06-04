@@ -4,9 +4,10 @@ import androidx.room.Entity;
 
 import com.example.musimatch.models.enums.UserType;
 
-@Entity
-public class User {
-    private String id;
+@Entity //this is not the right annotation - use javax.persistence
+//@Table(name = "USERS", uniqueConstraints = {@UniqueConstraint(columnNames = {"USERNAME"})})
+public class User implements MusimatchEntityInterface{
+    private Long id;
     private String username;
     private boolean isAdmin;
     private Double lastUpdated;
@@ -20,7 +21,7 @@ public class User {
 
     }
 
-    public User(String id, String username, boolean isAdmin, Double lastUpdated, UserType userType,
+    public User(Long id, String username, boolean isAdmin, Double lastUpdated, UserType userType,
                  String firstName, String lastName, Double averageRate, String spotifyUrl) {
         this.id = id;
         this.username = username;
@@ -33,11 +34,13 @@ public class User {
         this.spotifyUrl = spotifyUrl;
     }
 
-    public String getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    @Override
+    public void setId(Long id) {
         this.id = id;
     }
 

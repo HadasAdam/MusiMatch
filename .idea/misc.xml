@@ -33,6 +33,8 @@
         <entry key="..\:/Android/Projects/MusiMatch/app/src/main/res/layout/user_profile.xml" value="0.346875" />
         <entry key="..\:/Android/Projects/MusiMatch/app/src/main/res/menu/main.xml" value="0.29270833333333335" />
         <entry key="..\:/Android/Projects/MusiMatch/app/src/main/res/menu/user_top_menu.xml" value="0.278125" />
+        <entry key="..\:/Users/Owner/StudioProjects/MusiMatch/app/src/main/res/layout/fragment_edit_post.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Owner/StudioProjects/MusiMatch/app/src/main/res/layout/fragment_rate_post.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3342391304347826" />
         <entry key="app/src/main/res/layout/edit_profile.xml" value="0.33" />
         <entry key="app/src/main/res/layout/edit_profile1.xml" value="0.30052083333333335" />
@@ -43,7 +45,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

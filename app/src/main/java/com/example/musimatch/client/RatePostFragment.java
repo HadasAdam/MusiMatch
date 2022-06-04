@@ -254,17 +254,17 @@ public class RatePostFragment extends Fragment {
                 PoemRateSections.DEPT,
                 null,
                 Integer.valueOf(rate1star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser()));
+                LoginService.getInstance(getContext()).getUser(), post));
         serialRatersToAdd.add(new SerialRater(1L,
                 PoemRateSections.RHYMES,
                 null,
                 Integer.valueOf(rate2star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser()));
+                LoginService.getInstance(getContext()).getUser(), post));
         serialRatersToAdd.add(new SerialRater(1L,
                 PoemRateSections.LANGUAGE,
                 null,
                 Integer.valueOf(rate3star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser()));
+                LoginService.getInstance(getContext()).getUser(), post));
         post.addSerialRaters(serialRatersToAdd);
     }
 
@@ -296,17 +296,17 @@ public class RatePostFragment extends Fragment {
                 null,
                 MelodyRateSections.RHYTHM,
                 Integer.valueOf(rate1star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser()));
+                LoginService.getInstance(getContext()).getUser(), post));
         serialRatersToAdd.add(new SerialRater(1L,
                 null,
                 MelodyRateSections.QUALITY,
                 Integer.valueOf(rate2star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser()));
+                LoginService.getInstance(getContext()).getUser(), post));
         serialRatersToAdd.add(new SerialRater(1L,
                 null,
                 MelodyRateSections.UNIQUENESS,
                 Integer.valueOf(rate3star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser()));
+                LoginService.getInstance(getContext()).getUser(), post));
         post.addSerialRaters(serialRatersToAdd);
     }
 
