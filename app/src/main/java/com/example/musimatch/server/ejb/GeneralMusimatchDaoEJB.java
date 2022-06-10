@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.example.musimatch.models.MusimatchEntityInterface;
+import com.example.musimatch.models.PostModel;
 import com.example.musimatch.server.api.GeneralMusimatchDaoInterface;
 import com.example.musimatch.server.api.GeneralMusimatchDaoLocal;
 import com.example.musimatch.services.ConnectionService;
@@ -26,8 +27,9 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class GeneralMusimatchDaoEJB implements GeneralMusimatchDaoInterface, GeneralMusimatchDaoLocal {
+    public static final GeneralMusimatchDaoEJB instance = new GeneralMusimatchDaoEJB();
+    private static final Connection connect = ConnectionService.instance.getConnection();
     private static final String TAG = "GeneralMusimatchDaoEJB";
-    private Connection connect = ConnectionService.instance.getConnection();
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override

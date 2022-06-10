@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Entity
-public class User implements MusimatchEntityInterface{
+public class User implements MusimatchEntityInterface {
     public final static String TABLE_NAME = "Users";
     private static final String ID_COLUMN_NAME = "ID";
     private static final String USERNAME_COLUMN_NAME = "USERNAME";
@@ -131,7 +131,6 @@ public class User implements MusimatchEntityInterface{
         this.spotifyUrl = spotifyUrl;
     }
 
-    @Transaction
     public Map<String, Object> toJson() {
         Map<String, Object> json = new HashMap<String, Object>();
         json.put(ID_COLUMN_NAME, id);

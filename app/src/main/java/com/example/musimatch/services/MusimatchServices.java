@@ -4,10 +4,10 @@ import com.example.musimatch.server.api.UserServiceInterface;
 import com.example.musimatch.server.ejb.UserServiceEJB;
 
 public class MusimatchServices {
-    private static MusimatchServices instance = new MusimatchServices();
+    public static MusimatchServices instance = new MusimatchServices();
 
-    public static UserServiceInterface getUserService()
+    public UserServiceInterface getUserService()
     {
-        return new UserServiceEJB();
+        return UserServiceEJB.instance;
     }
 }

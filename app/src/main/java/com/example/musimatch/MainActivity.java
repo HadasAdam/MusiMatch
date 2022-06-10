@@ -13,8 +13,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.example.musimatch.models.Tag;
+import com.example.musimatch.models.User;
+import com.example.musimatch.server.ejb.TagServiceEJB;
+import com.example.musimatch.server.ejb.UserServiceEJB;
 import com.example.musimatch.services.ConnectionService;
 import com.example.musimatch.services.LoginService;
+import com.example.musimatch.services.MusimatchServices;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
@@ -83,15 +88,48 @@ public class MainActivity extends AppCompatActivity {
     private Executor executor = Executors.newSingleThreadExecutor();
 
     @SuppressLint("NewApi")
+    private void testUserDao() {
+        executor.execute(() -> {
+            try {
+                connect = ConnectionService.instance.getConnection();
+                if (connect != null) {
+                    User user = MusimatchServices.instance.getUserService().getUserById(1L);
+                    Log.d(TAG, user.getUsername());
+                } else {
+                    Log.d("Connect", "can't connect to db - check connection");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    @SuppressLint("NewApi")
+    private void testTagDao() {
+        executor.execute(() -> {
+            try {
+                connect = ConnectionService.instance.getConnection();
+                if (connect != null) {
+                    Tag tag = TagServiceEJB.instance.getTagById(1L);
+                    Log.d(TAG, tag.getName());
+                } else {
+                    Log.d("Connect", "can't connect to db - check connection");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    @SuppressLint("NewApi")
     private void testDB() {
         executor.execute(() -> {
             try {
                 connect = ConnectionService.instance.getConnection();
                 if (connect != null) {
-                    String query = "Select * from Users;";
+                    String query = "Select * from Tags;";
                     Statement st = connect.createStatement();
                     ResultSet resultSet = st.executeQuery(query);
-//                Log.d("Connect", "connect to db");
                     if(resultSet.next()){
                         Log.d(TAG, resultSet.getString("first_name"));
                     }

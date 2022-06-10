@@ -7,8 +7,8 @@ import com.example.musimatch.server.api.UserServiceInterface;
 import java.util.ArrayList;
 
 public class UserServiceEJB implements UserServiceInterface {
-
-    private GeneralMusimatchDaoLocal daoService;
+    public static final UserServiceEJB instance = new UserServiceEJB();
+    private static final GeneralMusimatchDaoLocal daoService = GeneralMusimatchDaoEJB.instance;
 
     @Override
     public User getUserById(Long id) {
