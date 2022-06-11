@@ -29,6 +29,7 @@ import com.google.firebase.auth.AuthResult;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.google_sign_in_button:
 //                signIn();
-                testDB();
+                testTagDao();
                 return true;
             case R.id.google_sign_out_button:
                 signOut();
@@ -110,8 +111,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 connect = ConnectionService.instance.getConnection();
                 if (connect != null) {
-                    Tag tag = TagServiceEJB.instance.getTagById(1L);
-                    Log.d(TAG, tag.getName());
+                    List<Tag> tags = TagServiceEJB.instance.getAllTags();
+                    Log.d(TAG, "" + tags.size());
                 } else {
                     Log.d("Connect", "can't connect to db - check connection");
                 }

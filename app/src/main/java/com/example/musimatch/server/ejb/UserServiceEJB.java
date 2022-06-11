@@ -12,12 +12,12 @@ public class UserServiceEJB implements UserServiceInterface {
 
     @Override
     public User getUserById(Long id) {
-        return daoService.findById(User.class, id);
+        return (User) daoService.findById(User.getTableName(), id);
     }
 
     @Override
     public User getUserByUsername(String username) {
-        ArrayList<User> users = (ArrayList<User>) daoService.findAll(User.class);
+        ArrayList<User> users = (ArrayList<User>) daoService.findAll(User.getTableName());
         for(User user: users)
         {
             if(user.getUsername().equals(username))

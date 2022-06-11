@@ -33,10 +33,11 @@ public class GeneralMusimatchDaoEJB implements GeneralMusimatchDaoInterface, Gen
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public <T extends MusimatchEntityInterface> List<T> findAll(Class<T> pType) {
+    public List<? extends MusimatchEntityInterface> findAll(String tableName) {
         try {
+            MusimatchEntityInterface entity;
             if (connect != null) {
-                String query = "Select * from " + T.getTableName() + ";";
+                String query = "Select * from `" + tableName + "`;";
                 Statement st = connect.createStatement();
                 ResultSet resultSet = st.executeQuery(query);
                 return resultSetToList(resultSet);
@@ -52,9 +53,9 @@ public class GeneralMusimatchDaoEJB implements GeneralMusimatchDaoInterface, Gen
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public <T extends MusimatchEntityInterface> T findById(Class<T> pType, Long pId) {
-        List<T> allObjects = findAll(pType);
-        for(T object: allObjects)
+    public MusimatchEntityInterface findById(String tableName, Long pId) {
+        List<? extends MusimatchEntityInterface> allObjects = findAll(tableName);
+        for(MusimatchEntityInterface object: allObjects)
         {
             if(object.getId().equals(pId))
                 return object;

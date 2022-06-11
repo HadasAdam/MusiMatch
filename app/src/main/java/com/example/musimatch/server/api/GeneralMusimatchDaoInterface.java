@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.concurrent.Executor;
 
 public interface GeneralMusimatchDaoInterface {
-    <T extends MusimatchEntityInterface> List<T> findAll(Class<T> pType);
-    <T extends MusimatchEntityInterface> T findById(Class<T> pType, Long pId);
+    List<? extends MusimatchEntityInterface> findAll(String tableName);
+    MusimatchEntityInterface findById(String tableName, Long pId);
     <T extends MusimatchEntityInterface> T merge(T pEntityToMerge);
     <T extends MusimatchEntityInterface> List<T> mergeAll(Collection<T> pCollection);
     <T extends MusimatchEntityInterface> void remove(T pEntity);

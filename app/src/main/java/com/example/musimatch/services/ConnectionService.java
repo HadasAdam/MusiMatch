@@ -14,9 +14,6 @@ public class ConnectionService {
 
     private ConnectionService() {
         this.connection = connectionClass();
-
-
-
     }
 
     public Connection getConnection() {
