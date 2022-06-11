@@ -2,10 +2,9 @@ package com.example.musimatch.models;
 
 import androidx.room.Entity;
 
-import com.example.musimatch.models.enums.PostType;
-
 @Entity
 public class AverageRater {
+    Long id;
     Double raterSection1 = 0D;
     Double raterSection2 = 0D;
     Double raterSection3 = 0D;
@@ -17,6 +16,16 @@ public class AverageRater {
         this.raterSection1 = raterSection1;
         this.raterSection2 = raterSection2;
         this.raterSection3 = raterSection3;
+    }
+
+    //@Override
+    public Long getId() {
+        return id;
+    }
+
+    //@Override
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Double getRaterSection1() {
@@ -42,4 +51,5 @@ public class AverageRater {
     public void setRaterSection3(Double raterSection3) {
         this.raterSection3 = raterSection3;
     }
+
 }

@@ -36,6 +36,7 @@ public class ConnectionService {
             Class.forName("com.mysql.jdbc.Driver");
             ConnectionUrl = "jdbc:mysql://bamba.cs.colman.ac.il:3306/MusiMatch?user=cs115&password=Move@115&useUnicode=true&characterEncoding=UTF-8";
 
+            DriverManager.setLoginTimeout(10);
             connection = DriverManager.getConnection(ConnectionUrl, username, pass);
         } catch (Exception ex) {
             Log.e("Error", ex.getMessage());

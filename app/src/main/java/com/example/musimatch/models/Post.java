@@ -8,10 +8,13 @@ import com.example.musimatch.models.enums.MelodyRateSections;
 import com.example.musimatch.models.enums.PoemRateSections;
 import com.example.musimatch.models.enums.PostType;
 
+import org.intellij.lang.annotations.Identifier;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
-@Entity
+//@Entity //this is not the right annotation - use javax.persistence
+//@Table(name = "POSTS")
 public class Post implements Serializable {
     private Long id;
     private String title;
@@ -55,6 +58,11 @@ public class Post implements Serializable {
         }
     }
 
+//    @Id
+//    @GeneratedValue(generator = "seq_posts_id")
+//    @SequenceGenerator(name = "seq_posts_id", sequenceName = "seq_posts_id")
+//    @Column(name = "ID")
+//    @NotNull //javax
     public Long getId() {
         return id;
     }
@@ -63,6 +71,7 @@ public class Post implements Serializable {
         this.id = id;
     }
 
+//    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -95,6 +104,9 @@ public class Post implements Serializable {
         this.postType = postType;
     }
 
+//    @OneToMany
+//    @JoinColumn(name = "CREATOR_ID", refferencedColumnName = "ID")
+//    @NotNull
     public User getCreator() {
         return creator;
     }
@@ -103,6 +115,8 @@ public class Post implements Serializable {
         this.creator = creator;
     }
 
+//    @OneToOne
+//    @JoinColumn(name = "AVERAGE_RATER_ID", refferencedColumnName = "ID")
     public Double getAveragePostRate() {
         return averagePostRate;
     }

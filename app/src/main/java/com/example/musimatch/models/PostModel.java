@@ -1,14 +1,20 @@
 package com.example.musimatch.models;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.musimatch.models.enums.PostType;
 
 import java.util.ArrayList;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class PostModel {
     ArrayList<Post> posts = new ArrayList<>();
 
     public final static PostModel instance = new PostModel();
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private PostModel() {
         initializePostsList();
     }
@@ -57,12 +63,13 @@ public class PostModel {
         return relevantPosts;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void initializePostsList()
     {
         for(int i = 0; i < 10; i++)
         {
             posts.add(new Post((long)i, "Post" + i, "I love cats\nThey are so cute\nI want to have one",
-                    "", UserModel.instance.findUserById(String.valueOf(i)),
+                    "", UserModel.instance.findUserById((long)i),
                     PostType.POEM,null, null, null,null));
         }
     }
