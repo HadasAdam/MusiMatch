@@ -1,14 +1,26 @@
 package com.example.musimatch.client;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.example.musimatch.R;
 
@@ -30,6 +42,15 @@ public class NewPostFragment extends Fragment {
     Button saveBtn;
     Button cancelBtn;
     ProgressBar progressBar;
+    ImageButton forwardbtn, backwardbtn, pausebtn, playbtn;
+    SeekBar songPrgs;
+    static int oTime =0, sTime =0, eTime =0, fTime = 5000, bTime = 5000;
+    Handler hdlr = new Handler();
+    View view;
+
+
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,7 +94,7 @@ public class NewPostFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_new_post, container, false);
+        view = inflater.inflate(R.layout.fragment_new_post, container, false);
         titleET = view.findViewById(R.id.newPostTitle);
         postTypeSpinner = view.findViewById(R.id.newPostPostTypeSpinner);
         lyricsET = view.findViewById(R.id.newPostLyricsMultiLine);
@@ -85,14 +106,63 @@ public class NewPostFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBar);
         saveBtn.setOnClickListener(v -> onClickSaveButton());
         cancelBtn.setOnClickListener(v -> onClickCancelButton());
+        backwardbtn = view.findViewById(R.id.btnBackward);
+        forwardbtn = view.findViewById(R.id.btnForward);
+        playbtn = view.findViewById(R.id.btnPlay);
+        pausebtn = view.findViewById(R.id.btnPause);
+        songPrgs = view.findViewById(R.id.sBar);
+        pausebtn.setEnabled(false);
         return view;
     }
+
+    
+
 
     private void onClickSaveButton() { // save new post
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    private void onClickCancelButton() { // cancel new post
+    private void onClickCancelButton() {
+        // cancel new post
+        Navigation.findNavController(view).navigate(R.id.action_newPostFragment_to_allPostsFragment);
+    }
+
+
+
+    int requestcode=1;
+    
+
+    public void onActivityResult(int requestcode,int resulCode, Intent data )
+    {
+        super.onActivityResult(resulCode,resulCode,data);
+        Context context = null;
+        {
+            context = context.getApplicationContext();
+        }
+        if(requestcode==requestcode && resulCode== Activity.RESULT_OK){
+            if(data==null)
+            {
+                return;
+            }
+            Uri uri = data.getData();
+            Toast.makeText(context,uri.getPath(),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void openfilechooser(View view)
+    {
+        Context context = null;
+
+            context = context.getApplicationContext();
+
+
+        Intent intent = new Intent(String.valueOf(context));
+        intent.setType("*");
+        startActivityForResult(intent,requestcode);
+
+
 
     }
+
+
 }

@@ -53,4 +53,13 @@
             android:name="post"
             app:argType="com.example.musimatch.models.Post" />
     </fragment>
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="com.example.musimatch.client.NewPostFragment"
+        android:label="fragment_new_post"
+        tools:layout="@layout/fragment_new_post" >
+        <action
+            android:id="@+id/action_newPostFragment_to_allPostsFragment"
+            app:destination="@id/allPostsFragment" />
+    </fragment>
 </navigation>

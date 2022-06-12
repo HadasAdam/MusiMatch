@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_new_post);
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         setSignedInView(LoginService.getInstance(this).getUserDisplayName(),
                 LoginService.getInstance(this).isLoggedIn());
         return true;
-    }
+    }*/
 
     /************************************ Login Methods ************************************/
 
