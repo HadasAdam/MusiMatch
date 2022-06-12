@@ -58,6 +58,23 @@ public class Post implements Serializable {
         }
     }
 
+    public Post(Long id, String title, String poemLyrics, String melodyFilePath,
+                User creator, PostType postType) {
+        this.id = id;
+        this.title = title;
+        this.poemLyrics = poemLyrics;
+        this.melodyFilePath = melodyFilePath;
+        this.creator = creator;
+        this.postType = postType;
+        this.averageRater = new AverageRater();
+        this.averagePostRate = 0D;
+
+        if(this.postType == null)
+        {
+            this.postType = PostType.POEM;
+        }
+    }
+
 //    @Id
 //    @GeneratedValue(generator = "seq_posts_id")
 //    @SequenceGenerator(name = "seq_posts_id", sequenceName = "seq_posts_id")

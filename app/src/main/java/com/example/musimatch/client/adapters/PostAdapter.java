@@ -1,10 +1,12 @@
 package com.example.musimatch.client.adapters;
 
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musimatch.R;
@@ -13,6 +15,7 @@ import com.example.musimatch.models.PostModel;
 
 import java.util.List;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class PostAdapter extends RecyclerView.Adapter<PostViewHolder>{
 
     public List<Post> data = PostModel.instance.getAllPosts();

@@ -9,6 +9,7 @@ import com.example.musimatch.models.enums.UserType;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class UserModel {
