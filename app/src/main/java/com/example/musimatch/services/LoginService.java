@@ -1,6 +1,10 @@
 package com.example.musimatch.services;
 
 import android.content.Context;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.musimatch.R;
 import com.example.musimatch.models.User;
 import com.example.musimatch.models.UserModel;
@@ -54,6 +58,16 @@ public class LoginService {
         return getFirebaseAuth().getCurrentUser();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static User getUser() {
+        return UserModel.instance.findUserById(0L);
+//        FirebaseUser firebaseUser = getFirebaseUser();
+//        if(firebaseUser == null)
+//            return null;
+//        else
+//            return UserModel.instance.findUserByUsername(firebaseUser.getDisplayName());
+    }
+
     private LoginService() {
     }
 
@@ -101,10 +115,11 @@ public class LoginService {
         return this.googleAccount != null ? this.googleAccount.getDisplayName() : "לא מחובר";
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void createNewUser(Task<AuthResult> authResultTask) {
         if (authResultTask.getResult().getAdditionalUserInfo().isNewUser()) {
-            User user = new User();
-            user.setId(authResultTask.getResult().getUser().getUid());
+            User user = new User(); //we want to use sequence for this
+            //user.setId(authResultTask.getResult().getUser().getUid());
             user.setAdmin(false);
             user.setUsername(authResultTask.getResult().getUser().getDisplayName());
 

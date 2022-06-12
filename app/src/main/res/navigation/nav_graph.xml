@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/allPostsFragment"
-        android:name="com.example.musimatch.AllPostsFragment"
+        android:name="com.example.musimatch.client.AllPostsFragment"
         android:label="fragment_all_posts"
         tools:layout="@layout/fragment_all_posts" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/postDetailsFragment"
-        android:name="com.example.musimatch.PostDetailsFragment"
+        android:name="com.example.musimatch.client.PostDetailsFragment"
         android:label="fragment_post_details"
         tools:layout="@layout/fragment_post_details" >
         <action
@@ -34,16 +34,19 @@
     </fragment>
     <fragment
         android:id="@+id/linkPostFragment"
-        android:name="com.example.musimatch.LinkPostFragment"
+        android:name="com.example.musimatch.client.LinkPostFragment"
         android:label="fragment_link_post"
         tools:layout="@layout/fragment_link_post" >
         <action
             android:id="@+id/action_linkPostFragment_to_postDetailsFragment"
             app:destination="@id/postDetailsFragment" />
+        <argument
+            android:name="destinationPost"
+            app:argType="com.example.musimatch.models.Post" />
     </fragment>
     <fragment
         android:id="@+id/ratePostFragment"
-        android:name="com.example.musimatch.RatePostFragment"
+        android:name="com.example.musimatch.client.RatePostFragment"
         android:label="fragment_rate_post"
         tools:layout="@layout/fragment_rate_post" >
         <action

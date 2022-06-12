@@ -1,9 +1,30 @@
 package com.example.musimatch.models;
 
-public class SerialRater {
+import com.example.musimatch.models.enums.MelodyRateSections;
+import com.example.musimatch.models.enums.PoemRateSections;
+
+import java.io.Serializable;
+
+public class SerialRater implements Serializable {
     Long id;
-    Rater rater;
+    PoemRateSections poemRateSections;
+    MelodyRateSections melodyRateSections;
     Integer value;
+    User userWhoRated;
+    Post postWasRated;
+
+    public SerialRater() {}
+
+    public SerialRater(Long id, PoemRateSections poemRateSections, MelodyRateSections melodyRateSections,
+                       Integer value, User userWhoRated, Post postWasRated)
+    {
+        this.id = id;
+        this.poemRateSections = poemRateSections;
+        this.melodyRateSections = melodyRateSections;
+        this.value = value;
+        this.userWhoRated = userWhoRated;
+        this.postWasRated = postWasRated;
+    }
 
     public Long getId() {
         return id;
@@ -13,12 +34,22 @@ public class SerialRater {
         this.id = id;
     }
 
-    public Rater getRater() {
-        return rater;
+    public PoemRateSections getPoemRateSections() {
+        return poemRateSections;
     }
 
-    public void setRater(Rater rater) {
-        this.rater = rater;
+    public void setPoemRateSections(PoemRateSections poemRateSections) {
+        this.poemRateSections = poemRateSections;
+        this.melodyRateSections = null;
+    }
+
+    public MelodyRateSections getMelodyRateSections() {
+        return melodyRateSections;
+    }
+
+    public void setMelodyRateSections(MelodyRateSections melodyRateSections) {
+        this.melodyRateSections = melodyRateSections;
+        this.poemRateSections = null;
     }
 
     public Integer getValue() {
@@ -27,5 +58,22 @@ public class SerialRater {
 
     public void setValue(Integer value) {
         this.value = value;
+    }
+
+    public User getUserWhoRated()
+    {
+        return userWhoRated;
+    }
+
+    public void setUserWhoRated(User userWhoRated) {
+        this.userWhoRated = userWhoRated;
+    }
+
+    public Post getPostWasRated() {
+        return postWasRated;
+    }
+
+    public void setPostWasRated(Post postWasRated) {
+        this.postWasRated = postWasRated;
     }
 }
