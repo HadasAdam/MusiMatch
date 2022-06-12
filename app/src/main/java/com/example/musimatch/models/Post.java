@@ -213,21 +213,21 @@ public class Post implements Serializable {
         for(int i = 0; i < serialRaters.size(); i++)
         {
             SerialRater currentSerialRater = serialRaters.get(i);
-            if(currentSerialRater.poemRateSections.equals(PoemRateSections.DEPT) ||
-                    currentSerialRater.melodyRateSections.equals(MelodyRateSections.RHYTHM))
+            if((currentSerialRater.poemRateSections != null && currentSerialRater.poemRateSections.equals(PoemRateSections.DEPT)) ||
+                    (currentSerialRater.melodyRateSections != null && currentSerialRater.melodyRateSections.equals(MelodyRateSections.RHYTHM)))
             {
                 counters[FIRST_RATER_INDEX]++;
                 sums[FIRST_RATER_INDEX]+=currentSerialRater.getValue();
             }
-            else if(currentSerialRater.poemRateSections.equals(PoemRateSections.RHYMES) ||
-                    currentSerialRater.melodyRateSections.equals(MelodyRateSections.QUALITY))
+            else if((currentSerialRater.poemRateSections != null && currentSerialRater.poemRateSections.equals(PoemRateSections.RHYMES)) ||
+                    (currentSerialRater.melodyRateSections != null && currentSerialRater.melodyRateSections.equals(MelodyRateSections.QUALITY)))
             {
                 counters[SECOND_RATER_INDEX]++;
                 sums[SECOND_RATER_INDEX]+=currentSerialRater.getValue();
             }
 
-            else if(currentSerialRater.poemRateSections.equals(PoemRateSections.LANGUAGE) ||
-                    currentSerialRater.melodyRateSections.equals(MelodyRateSections.UNIQUENESS))
+            else if((currentSerialRater.poemRateSections != null && currentSerialRater.poemRateSections.equals(PoemRateSections.LANGUAGE)) ||
+                    (currentSerialRater.melodyRateSections != null && currentSerialRater.melodyRateSections.equals(MelodyRateSections.UNIQUENESS)))
             {
                 counters[THIRD_RATER_INDEX]++;
                 sums[THIRD_RATER_INDEX]+=currentSerialRater.getValue();

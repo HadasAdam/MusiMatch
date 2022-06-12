@@ -48,8 +48,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(view -> {
             if (onItemClickListener != null) {
                 onItemClickListener.onItemClick(position);
-                AllPostsFragmentDirections.ActionAllPostsFragmentToPostDetailsFragment action = AllPostsFragmentDirections.actionAllPostsFragmentToPostDetailsFragment(currentPost);
-                Navigation.findNavController(view).navigate(action);
             }
         });
     }

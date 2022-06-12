@@ -22,6 +22,7 @@ public class PostDetailsFragment extends Fragment {
     private static final String TAG = "PostDetailsFragment";
 
     ArrayList<Comment> commentsArrayList = new ArrayList<>();
+    Post post;
 
     View view;
     TextView postTitle;
@@ -52,10 +53,10 @@ public class PostDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_post_details,container, false);
-        Post post = PostDetailsFragmentArgs.fromBundle(getArguments()).getPost();
+        post = PostDetailsFragmentArgs.fromBundle(getArguments()).getPost();
         linkComponents();
-        initializeComponent(post);
-        initializeComments(post);
+        initializeComponent();
+        initializeComments();
 
         return view;
     }
@@ -77,7 +78,7 @@ public class PostDetailsFragment extends Fragment {
         rate3title = view.findViewById(R.id.postDetails_rate3title);
     }
 
-    private void initializeComponent(Post post)
+    private void initializeComponent()
     {
         postTitle.setText(post.getTitle());
         postLyrics.setText(post.getPoemLyrics() != null ? post.getPoemLyrics() + "" : "");
@@ -87,7 +88,8 @@ public class PostDetailsFragment extends Fragment {
         uploaderUsername.setText(post.getCreator().getUsername());
 
         linkedPosts.setOnClickListener(v -> {
-            Navigation.findNavController(view).navigate(R.id.action_postDetailsFragment_to_linkPostFragment);
+            PostDetailsFragmentDirections.ActionPostDetailsFragmentToLinkPostFragment action = PostDetailsFragmentDirections.actionPostDetailsFragmentToLinkPostFragment(post);
+            Navigation.findNavController(view).navigate(action);
         });
 
         rate.setOnClickListener(v -> {
@@ -97,7 +99,7 @@ public class PostDetailsFragment extends Fragment {
         });
     }
 
-    private void initializeComments(Post post) {
+    private void initializeComments() {
         commentsArrayList = post.getComments();
         RecyclerView recyclerView = view.findViewById(R.id.PostDetails_recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());

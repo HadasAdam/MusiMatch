@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_linkPostFragment_to_postDetailsFragment"
             app:destination="@id/postDetailsFragment" />
+        <argument
+            android:name="destinationPost"
+            app:argType="com.example.musimatch.models.Post" />
     </fragment>
     <fragment
         android:id="@+id/ratePostFragment"

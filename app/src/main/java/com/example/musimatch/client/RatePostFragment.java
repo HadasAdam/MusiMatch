@@ -205,9 +205,17 @@ public class RatePostFragment extends Fragment {
         return poemRateSectionsMap;
     }
 
+    private void cancel()
+    {
+        RatePostFragmentDirections.ActionRatePostFragmentToPostDetailsFragment action =
+                RatePostFragmentDirections.actionRatePostFragmentToPostDetailsFragment(post);
+        Navigation.findNavController(view).navigate(action);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void save()
     {
-        if(LoginService.getInstance(getContext()).getFirebaseUser() != null)
+        if(LoginService.getUser() != null)
         {
            switch (post.getPostType())
            {
@@ -226,6 +234,7 @@ public class RatePostFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void savePoemRates()
     {
         boolean userAlreadyRatedThisPost = false;
@@ -247,6 +256,7 @@ public class RatePostFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void addNewPoemSerialRaters()
     {
         ArrayList<SerialRater> serialRatersToAdd = new ArrayList<>();
@@ -254,20 +264,21 @@ public class RatePostFragment extends Fragment {
                 PoemRateSections.DEPT,
                 null,
                 Integer.valueOf(rate1star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser(), post));
+                LoginService.getUser(), post));
         serialRatersToAdd.add(new SerialRater(1L,
                 PoemRateSections.RHYMES,
                 null,
                 Integer.valueOf(rate2star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser(), post));
+                LoginService.getUser(), post));
         serialRatersToAdd.add(new SerialRater(1L,
                 PoemRateSections.LANGUAGE,
                 null,
                 Integer.valueOf(rate3star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser(), post));
+                LoginService.getUser(), post));
         post.addSerialRaters(serialRatersToAdd);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void saveMelodyRates()
     {
         boolean userAlreadyRatedThisPost = false;
@@ -276,7 +287,7 @@ public class RatePostFragment extends Fragment {
 
         for(int i = 0; i < serialRatersOfPost.size(); i++)
         {
-            if(serialRatersOfPost.get(i).getUserWhoRated().equals(LoginService.getInstance(getContext()).getFirebaseUser()))
+            if(serialRatersOfPost.get(i).getUserWhoRated().equals(LoginService.getUser()))
             {
                 userAlreadyRatedThisPost = true;
                 serialRatersOfPost.get(i).setValue(Integer.valueOf(ratersMap.get(serialRatersOfPost.get(i).getPoemRateSections()).getText().toString()));
@@ -289,6 +300,7 @@ public class RatePostFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void addNewMelodySerialRaters()
     {
         ArrayList<SerialRater> serialRatersToAdd = new ArrayList<>();
@@ -296,28 +308,21 @@ public class RatePostFragment extends Fragment {
                 null,
                 MelodyRateSections.RHYTHM,
                 Integer.valueOf(rate1star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser(), post));
+                LoginService.getUser(), post));
         serialRatersToAdd.add(new SerialRater(1L,
                 null,
                 MelodyRateSections.QUALITY,
                 Integer.valueOf(rate2star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser(), post));
+                LoginService.getUser(), post));
         serialRatersToAdd.add(new SerialRater(1L,
                 null,
                 MelodyRateSections.UNIQUENESS,
                 Integer.valueOf(rate3star.getText().toString()),
-                LoginService.getInstance(getContext()).getUser(), post));
+                LoginService.getUser(), post));
         post.addSerialRaters(serialRatersToAdd);
     }
 
     private void navigateToDetailsFragment()
-    {
-        RatePostFragmentDirections.ActionRatePostFragmentToPostDetailsFragment action =
-                RatePostFragmentDirections.actionRatePostFragmentToPostDetailsFragment(post);
-        Navigation.findNavController(view).navigate(action);
-    }
-
-    private void cancel()
     {
         RatePostFragmentDirections.ActionRatePostFragmentToPostDetailsFragment action =
                 RatePostFragmentDirections.actionRatePostFragmentToPostDetailsFragment(post);
