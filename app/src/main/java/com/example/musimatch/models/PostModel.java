@@ -41,11 +41,11 @@ public class PostModel {
         return null;
     }
 
-    public ArrayList<Post> findPostsByUserId(String userId) {
+    public ArrayList<Post> findPostsByUser(User user) {
         ArrayList<Post> relevantPosts = new ArrayList<>();
         for (Post post : posts)
         {
-            if(post.getCreator().getId().equals(userId))
+            if(post.getCreator().equals(user))
             {
                 relevantPosts.add(post);
             }

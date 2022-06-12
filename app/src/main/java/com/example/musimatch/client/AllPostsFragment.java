@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -47,8 +48,9 @@ public class AllPostsFragment extends Fragment {
         adapter.setOnClickListener(new PostAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Long postId = postsArrayList.get(position).getId();
-                //TODO: Navigate to post details
+                Post currentPost = postsArrayList.get(position);
+                AllPostsFragmentDirections.ActionAllPostsFragmentToPostDetailsFragment action = AllPostsFragmentDirections.actionAllPostsFragmentToPostDetailsFragment(currentPost);
+                Navigation.findNavController(view).navigate(action);
             }
         });
 
