@@ -46,8 +46,19 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         postLyrics.setText(currentPost.getPoemLyrics() != null ? currentPost.getPoemLyrics() + "" : "");
         linkedPosts.setText(currentPost.getLinkedPosts() != null ? currentPost.getLinkedPosts().size() + "" : "0");
         comments.setText(currentPost.getComments() != null ? currentPost.getComments().size() + "" : "");
+        tags.setText(getTagsString(currentPost));
         rate.setText(String.valueOf(currentPost.getAveragePostRate()));
         uploaderUsername.setText(currentPost.getCreator().getUsername());
         this.position = position;
+    }
+
+    private String getTagsString(Post post)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < post.getTags().size(); i++)
+        {
+            stringBuilder.append(" #").append(post.getTags().get(i).getName());
+        }
+        return stringBuilder.toString();
     }
 }
