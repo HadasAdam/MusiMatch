@@ -18,6 +18,8 @@ import com.example.musimatch.R;
 import com.example.musimatch.client.adapters.CommentAdapter;
 import com.example.musimatch.models.Comment;
 import com.example.musimatch.models.Post;
+import com.example.musimatch.models.enums.MelodyRateSections;
+import com.example.musimatch.models.enums.PoemRateSections;
 import com.example.musimatch.services.LoginService;
 
 import java.util.ArrayList;
@@ -64,6 +66,7 @@ public class PostDetailsFragment extends Fragment {
         linkComponents();
         initializeComponent();
         initializeComments();
+        initializeRaters();
 
         return view;
     }
@@ -132,5 +135,24 @@ public class PostDetailsFragment extends Fragment {
         CommentAdapter adapter = new CommentAdapter(layoutInflater);
         adapter.setData(commentsArrayList);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void initializeRaters() {
+        switch (post.getPostType())
+        {
+            case POEM:
+                rate1title.setText(PoemRateSections.DEPT.name());
+                rate2title.setText(PoemRateSections.RHYMES.name());
+                rate3title.setText(PoemRateSections.LANGUAGE.name());
+                break;
+            case MELODY:
+                rate1title.setText(MelodyRateSections.RHYTHM.name());
+                rate2title.setText(MelodyRateSections.QUALITY.name());
+                rate3title.setText(MelodyRateSections.UNIQUENESS.name());
+        }
+
+        rate1star.setText(String.valueOf(post.getAverageRater().getRaterSection1()));
+        rate2star.setText(String.valueOf(post.getAverageRater().getRaterSection2()));
+        rate3star.setText(String.valueOf(post.getAverageRater().getRaterSection3()));
     }
 }
