@@ -26,6 +26,27 @@ public class PostModel {
         return posts;
     }
 
+    public void removePost(Post post)
+    {
+        if(posts.contains(post))
+        {
+            posts.remove(post);
+        }
+    }
+
+    public void updatePost(Post post)
+    {
+        for(Post currentPost: posts)
+        {
+            if(currentPost.getId().equals(post.getId()))
+            {
+                removePost(currentPost);
+                posts.add(post);
+                return;
+            }
+        }
+    }
+
     public void createPost(Post post) {
         posts.add(post);
     }
