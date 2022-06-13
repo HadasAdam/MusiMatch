@@ -33,17 +33,49 @@ public class User implements MusimatchEntityInterface {
     private Long id;
     private String username;
     private boolean isAdmin;
+    private String email; //TODO: need to be added to database
     private UserType userType = UserType.NONE;
     private String firstName = "";
     private String lastName = "";
-    private Double averageRate = 0d;
-    private String spotifyUrl = "";
+    private Double averageRate = 0d; //TODO: unused in the meanwhile
+    private String spotifyUrl = ""; //TODO: unused in the meanwhile
     private LocalDate creationDate;
 
     public User() {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public User(Long id, String username, String email, UserType userType,
+                String firstName, String lastName) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.isAdmin = false;
+        this.creationDate = LocalDate.now();
+        this.userType = userType;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.averageRate = 0D;
+        this.spotifyUrl = "";
+
+    }
+
+    public User(Long id, String username, String email, boolean isAdmin, LocalDate creationDate, UserType userType,
+                String firstName, String lastName, Double averageRate, String spotifyUrl) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.isAdmin = isAdmin;
+        this.creationDate = creationDate;
+        this.userType = userType;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.averageRate = averageRate;
+        this.spotifyUrl = spotifyUrl;
+    }
+
+    //TODO: ADD "EMAIL" TO THIS CONSTRUCTOR AND TO THE DATABASE
     public User(Long id, String username, boolean isAdmin, LocalDate creationDate, UserType userType,
                  String firstName, String lastName, Double averageRate, String spotifyUrl) {
         this.id = id;
@@ -81,6 +113,14 @@ public class User implements MusimatchEntityInterface {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public LocalDate getCreationDate() {

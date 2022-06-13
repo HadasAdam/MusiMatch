@@ -101,6 +101,14 @@ public class PostDetailsFragment extends Fragment {
         tags.setText(getTagsString(post));
         rate.setText(String.valueOf(post.getAveragePostRate()));
         uploaderUsername.setText(post.getCreator().getUsername());
+        uploaderUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PostDetailsFragmentDirections.ActionPostDetailsFragmentToUserProfileFragment4 action =
+                        PostDetailsFragmentDirections.actionPostDetailsFragmentToUserProfileFragment4(post.getCreator());
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
         editButton.setOnClickListener(v -> {
             PostDetailsFragmentDirections.ActionPostDetailsFragmentToEditPostFragment action =
                     PostDetailsFragmentDirections.actionPostDetailsFragmentToEditPostFragment(post);

@@ -29,6 +29,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_allPostsFragment_to_userProfileFragment4">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -39,8 +44,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-589" />
-                            <option name="y" value="91" />
+                            <option name="x" value="-564" />
+                            <option name="y" value="127" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -60,8 +65,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-262" />
-                            <option name="y" value="-612" />
+                            <option name="x" value="-432" />
+                            <option name="y" value="-646" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -72,6 +77,27 @@
                               </value>
                             </entry>
                             <entry key="action_editPostFragment_to_postDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="editProfileFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1155" />
+                            <option name="y" value="-589" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_editProfileFragment_to_userProfileFragment4">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -102,6 +128,27 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="newPostFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1125" />
+                            <option name="y" value="-40" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_newPostFragment_to_userProfileFragment4">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="postDetailsFragment">
                     <value>
                       <LayoutPositions>
@@ -118,12 +165,22 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_postDetailsFragment_to_commentToPostFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_postDetailsFragment_to_editPostFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="action_postDetailsFragment_to_ratePostFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_postDetailsFragment_to_userProfileFragment4">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -143,13 +200,49 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-243" />
-                            <option name="y" value="74" />
+                            <option name="x" value="-240" />
+                            <option name="y" value="130" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
                             <entry key="action_ratePostFragment_to_postDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="userProfileFragment4">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-979" />
+                            <option name="y" value="-341" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_userProfileFragment4_to_allPostsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_userProfileFragment4_to_editProfileFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_userProfileFragment4_to_newPostFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_userProfileFragment4_to_postDetailsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

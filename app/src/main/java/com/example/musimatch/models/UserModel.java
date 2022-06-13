@@ -53,13 +53,34 @@ public class UserModel {
         return null;
     }
 
+    public void removePost(User user)
+    {
+        if(users.contains(user))
+        {
+            users.remove(user);
+        }
+    }
+
+    public void updateUser(User user)
+    {
+        for(User currentUser: users)
+        {
+            if(currentUser.getId().equals(user.getId()))
+            {
+                removePost(currentUser);
+                users.add(user);
+                return;
+            }
+        }
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initializeUsersList()
     {
         for(int i = 0; i < 10; i++)
         {
-            users.add(new User((long)i,"user" + i, false, LocalDate.now(), UserType.POET, "john" + i,
-                    "Adams" + i, 0d, ""));
+            users.add(new User((long)i,"user" + i, i + "email@gmail.com", UserType.POET, "john" + i,
+                    "Adams" + i));
         }
     }
 }

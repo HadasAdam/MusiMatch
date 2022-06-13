@@ -3,90 +3,69 @@ package com.example.musimatch.client;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.musimatch.R;
+import com.example.musimatch.models.User;
+import com.example.musimatch.models.UserModel;
+import com.example.musimatch.models.enums.UserType;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EditProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class EditProfileFragment extends Fragment {
 
     private static final String TAG = "EditProfileFragment";
 
-    private View view;
+    User userToEdit;
+    View view;
     EditText firstName;
     EditText lastName;
     EditText email;
-    EditText phoneNumber;
-    Spinner country;
+    Spinner userType;
     Button cancelBtn;
     Button saveBtn;
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public EditProfileFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EditProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EditProfileFragment newInstance(String param1, String param2) {
-        EditProfileFragment fragment = new EditProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
+        userToEdit = EditProfileFragmentArgs.fromBundle(getArguments()).getUserToEdit();
         firstName = view.findViewById(R.id.editProfileFirstName);
         lastName = view.findViewById(R.id.editProfileLastName);
         email = view.findViewById(R.id.editProfileEmail);
-        phoneNumber = view.findViewById(R.id.editProfilePhoneNumber);
-        country = view.findViewById(R.id.editProfileSpinner);
+
+        firstName.setText(userToEdit.getFirstName());
+        lastName.setText(userToEdit.getLastName());
+        email.setText(userToEdit.getEmail());
+
+        userType = view.findViewById(R.id.editProfileSpinner);
         cancelBtn = view.findViewById(R.id.editProfileCancelBtn);
         saveBtn = view.findViewById(R.id.editProfileSaveBtn);
         saveBtn.setOnClickListener(v -> onClickSaveButton());
         cancelBtn.setOnClickListener(v -> onClickCancelButton());
+        initializeTypeSpinner(userType);
         return view;
     }
 
@@ -108,24 +87,61 @@ public class EditProfileFragment extends Fragment {
     }
 
     private void onClickCancelButton() { // cancel the edit of the profile
-
-
         Log.d(TAG, "click cancel");
         AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
         alertDialogBuilder.setTitle("profile edit canceled");
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+        navigateToUserProfile(userToEdit);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void onClickSaveButton() { // save changes in user profile
-
-
 
         Log.d(TAG, "click save");
         AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
         alertDialogBuilder.setTitle("profile edit success");
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+        User editedUser = new User(userToEdit.getId(), userToEdit.getUsername(), email.getText().toString(), userToEdit.isAdmin(),
+                userToEdit.getCreationDate(), UserType.values()[userType.getSelectedItemPosition()], firstName.getText().toString(), lastName.getText().toString(),
+                userToEdit.getAverageRate(), userToEdit.getSpotifyUrl());
+        UserModel.instance.updateUser(editedUser);
+        navigateToUserProfile(editedUser);
     }
 
+    private void navigateToUserProfile(User user)
+    {
+        EditProfileFragmentDirections.ActionEditProfileFragmentToUserProfileFragment4 action =
+                EditProfileFragmentDirections.actionEditProfileFragmentToUserProfileFragment4(user);
+        Navigation.findNavController(view).navigate(action);
+    }
+
+    private void initializeTypeSpinner(Spinner spinner)
+    {
+        String[] userTypes = new String[UserType.values().length];
+        for(int i = 0; i < UserType.values().length; i++)
+        {
+            userTypes[i] = UserType.values()[i].name();
+        }
+
+        ArrayAdapter<String> dataAdapter;
+        dataAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item, userTypes);
+
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinner.setSelection(userToEdit.getUserType().ordinal());
+    }
 }

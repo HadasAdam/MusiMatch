@@ -112,7 +112,7 @@ public class LoginService {
     }
 
     public String getUserDisplayName() {
-        return this.googleAccount != null ? this.googleAccount.getDisplayName() : "לא מחובר";
+        return this.googleAccount != null ? this.googleAccount.getDisplayName() : "מחובר";
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

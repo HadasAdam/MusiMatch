@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_allPostsFragment_to_editPostFragment"
             app:destination="@id/editPostFragment" />
+        <action
+            android:id="@+id/action_allPostsFragment_to_userProfileFragment4"
+            app:destination="@id/userProfileFragment4" />
     </fragment>
     <fragment
         android:id="@+id/postDetailsFragment"
@@ -40,6 +43,9 @@
         <action
             android:id="@+id/action_postDetailsFragment_to_commentToPostFragment"
             app:destination="@id/commentToPostFragment" />
+        <action
+            android:id="@+id/action_postDetailsFragment_to_userProfileFragment4"
+            app:destination="@id/userProfileFragment4" />
     </fragment>
     <fragment
         android:id="@+id/linkPostFragment"
@@ -106,5 +112,50 @@
         <argument
             android:name="postToCommentOn"
             app:argType="com.example.musimatch.models.Post" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.musimatch.client.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_userProfileFragment4"
+            app:destination="@id/userProfileFragment4" />
+        <argument
+            android:name="userToEdit"
+            app:argType="com.example.musimatch.models.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="com.example.musimatch.client.NewPostFragment"
+        android:label="fragment_new_post"
+        tools:layout="@layout/fragment_new_post" >
+        <action
+            android:id="@+id/action_newPostFragment_to_userProfileFragment4"
+            app:destination="@id/userProfileFragment4" />
+        <argument
+            android:name="uploader"
+            app:argType="com.example.musimatch.models.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment4"
+        android:name="com.example.musimatch.client.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfileFragment4_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment4_to_newPostFragment"
+            app:destination="@id/newPostFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment4_to_allPostsFragment"
+            app:destination="@id/allPostsFragment" />
+        <argument
+            android:name="profileOwnerUser"
+            app:argType="com.example.musimatch.models.User" />
+        <action
+            android:id="@+id/action_userProfileFragment4_to_postDetailsFragment"
+            app:destination="@id/postDetailsFragment" />
     </fragment>
 </navigation>
