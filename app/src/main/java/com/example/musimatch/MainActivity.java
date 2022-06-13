@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
 
+    private final Executor executor = Executors.newSingleThreadExecutor();
+
     private MenuItem signOutButton;
     private MenuItem signInButton;
     private MenuItem loggedInUsername;
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private Executor executor = Executors.newSingleThreadExecutor();
+
 
     @SuppressLint("NewApi")
     private void testUserDao() {

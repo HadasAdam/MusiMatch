@@ -19,7 +19,6 @@ import com.example.musimatch.models.Post;
 import com.example.musimatch.models.PostModel;
 import com.example.musimatch.services.LoginService;
 
-
 import java.util.ArrayList;
 
 public class LinkPostFragment extends Fragment {
@@ -65,13 +64,10 @@ public class LinkPostFragment extends Fragment {
         PostAdapter adapter = new PostAdapter(layoutInflater);
         recyclerView.setAdapter(adapter);
         adapter.setData(postsArrayList);
-        adapter.setOnClickListener(new PostAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Post myPost = postsArrayList.get(position);
-                linkPostToPost(myPost, destinationPost);
-                navigateToBackPostDetails();
-            }
+        adapter.setOnClickListener(position -> {
+            Post myPost = postsArrayList.get(position);
+            linkPostToPost(myPost, destinationPost);
+            navigateToBackPostDetails();
         });
 
         return view;

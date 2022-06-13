@@ -1,5 +1,8 @@
 package com.example.musimatch.client;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,6 +23,7 @@ public class EditPostFragment extends Fragment {
 
     private static final String TAG = "EditPostFragment";
 
+    View view;
     EditText titleET;
     Spinner postTypeSpinner;
     EditText lyricsET;
@@ -72,7 +76,7 @@ public class EditPostFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_edit_post, container, false);
+        view = inflater.inflate(R.layout.fragment_edit_post, container, false);
         titleET = view.findViewById(R.id.editPostTitle);
         postTypeSpinner = view.findViewById(R.id.editPostPostTypeSpinner);
         lyricsET = view.findViewById(R.id.editPostLyricsMultiLine);
@@ -88,15 +92,46 @@ public class EditPostFragment extends Fragment {
         return view;
     }
 
+    private AlertDialog.Builder getAlertDialogBuilder() {
+        Context context = view.getContext();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        // set dialog message
+        alertDialogBuilder
+                .setMessage("Click ok to exit and try again")
+                .setCancelable(false)
+                .setNegativeButton("Ok",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+        return alertDialogBuilder;
+    }
+
     private void onClickSaveButton() { // save the edit of the post
 
+        AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
+        alertDialogBuilder.setTitle("post edit success");
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     private void onClickCancelButton() { // cancel the edit of the post
 
+
+        AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
+        alertDialogBuilder.setTitle("post edit canceled");
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     private void onClickDeleteButton() { // delete the post
 
+
+        AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
+        alertDialogBuilder.setTitle("post deleted");
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

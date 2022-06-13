@@ -24,7 +24,6 @@ public class UserProfileFragment extends Fragment {
     Button editBtn;
     Button addNewBtn;
 
-
     public UserProfileFragment() {
         // Required empty public constructor
     }

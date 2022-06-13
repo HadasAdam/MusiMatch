@@ -43,6 +43,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         editButton.setOnClickListener(view -> {
             //TODO: Navigate to edit post
+
         });
 
         itemView.setOnClickListener(view -> {

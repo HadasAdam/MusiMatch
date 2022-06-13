@@ -33,8 +33,7 @@ public class AllPostsFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_all_posts, container, false);
         postsArrayList = new ArrayList<Post>(PostModel.instance.getAllPosts());
         RecyclerView recyclerView = view.findViewById(R.id.allPostsFRG_recyclerView);
@@ -45,13 +44,10 @@ public class AllPostsFragment extends Fragment {
         PostAdapter adapter = new PostAdapter(layoutInflater);
         recyclerView.setAdapter(adapter);
         adapter.setData(postsArrayList);
-        adapter.setOnClickListener(new PostAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Post currentPost = postsArrayList.get(position);
-                AllPostsFragmentDirections.ActionAllPostsFragmentToPostDetailsFragment action = AllPostsFragmentDirections.actionAllPostsFragmentToPostDetailsFragment(currentPost);
-                Navigation.findNavController(view).navigate(action);
-            }
+        adapter.setOnClickListener(position -> {
+            Post currentPost = postsArrayList.get(position);
+            AllPostsFragmentDirections.ActionAllPostsFragmentToPostDetailsFragment action = AllPostsFragmentDirections.actionAllPostsFragmentToPostDetailsFragment(currentPost);
+            Navigation.findNavController(view).navigate(action);
         });
 
         return view;
