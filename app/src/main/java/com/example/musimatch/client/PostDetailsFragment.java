@@ -1,6 +1,9 @@
 package com.example.musimatch.client;
 
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.musimatch.R;
 import com.example.musimatch.client.adapters.CommentAdapter;
 import com.example.musimatch.models.Comment;
 import com.example.musimatch.models.Post;
+import com.example.musimatch.services.LoginService;
 
 import java.util.ArrayList;
 
@@ -25,6 +30,7 @@ public class PostDetailsFragment extends Fragment {
     Post post;
 
     View view;
+    Button editButton;
     TextView postTitle;
     TextView postLyrics;
     TextView linkedPosts;
@@ -49,6 +55,7 @@ public class PostDetailsFragment extends Fragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,6 +70,7 @@ public class PostDetailsFragment extends Fragment {
 
     private void linkComponents()
     {
+        editButton = view.findViewById(R.id.postDetails_editButton);
         postTitle = view.findViewById(R.id.postDetails_title);
         postLyrics = view.findViewById(R.id.postDetails_content);
         linkedPosts = view.findViewById(R.id.postDetails_linkedPosts);
@@ -78,6 +86,7 @@ public class PostDetailsFragment extends Fragment {
         rate3title = view.findViewById(R.id.postDetails_rate3title);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void initializeComponent()
     {
         postTitle.setText(post.getTitle());
@@ -86,6 +95,18 @@ public class PostDetailsFragment extends Fragment {
         comments.setText(post.getComments() != null ? post.getComments().size() + "" : "");
         rate.setText(String.valueOf(post.getAveragePostRate()));
         uploaderUsername.setText(post.getCreator().getUsername());
+
+        if(!post.getCreator().equals(LoginService.getUser()))
+        {
+            editButton.setVisibility(View.INVISIBLE);
+        }
+        else {
+            editButton.setOnClickListener(v -> {
+                PostDetailsFragmentDirections.ActionPostDetailsFragmentToEditPostFragment action =
+                        PostDetailsFragmentDirections.actionPostDetailsFragmentToEditPostFragment(post);
+                Navigation.findNavController(view).navigate(action);
+            });
+        }
 
         linkedPosts.setOnClickListener(v -> {
             PostDetailsFragmentDirections.ActionPostDetailsFragmentToLinkPostFragment action = PostDetailsFragmentDirections.actionPostDetailsFragmentToLinkPostFragment(post);

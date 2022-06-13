@@ -13,10 +13,8 @@ import com.example.musimatch.models.Post;
 
 public class PostViewHolder extends RecyclerView.ViewHolder {
     public PostAdapter.OnItemClickListener onItemClickListener;
-    private boolean isEditAvailable;
     Post currentPost;
     int position;
-    Button editButton;
     TextView postTitle;
     TextView postLyrics;
     TextView linkedPosts;
@@ -25,10 +23,8 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     TextView uploaderUsername;
     TextView tags;
 
-    public PostViewHolder(@NonNull View itemView, boolean isEditable) {
+    public PostViewHolder(@NonNull View itemView) {
         super(itemView);
-        this.isEditAvailable = isEditable;
-        editButton = itemView.findViewById(R.id.postPoem_editButton);
         postTitle = itemView.findViewById(R.id.postPoem_title);
         postLyrics = itemView.findViewById(R.id.postPoem_lyrics);
         linkedPosts = itemView.findViewById(R.id.postPoem_links);
@@ -36,14 +32,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         rate = itemView.findViewById(R.id.postPoem_rate);
         uploaderUsername = itemView.findViewById(R.id.postPoem_uploader);
         tags = itemView.findViewById(R.id.postPoem_tags);
-
-        if (this.isEditAvailable) {
-            editButton.setVisibility(View.VISIBLE);
-        }
-
-        editButton.setOnClickListener(view -> {
-            //TODO: Navigate to edit post
-        });
 
         itemView.setOnClickListener(view -> {
             if (onItemClickListener != null) {

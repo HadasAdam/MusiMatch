@@ -29,6 +29,18 @@ public class TagModel {
         return null;
     }
 
+    public Tag findTagByName(String tagName)
+    {
+        for(Tag tag: tags)
+        {
+            if(tag.getName().equals(tagName))
+            {
+                return tag;
+            }
+        }
+        return null;
+    }
+
     private void initializeTagsList()
     {
         for (int i = 0; i < 10; i++)
