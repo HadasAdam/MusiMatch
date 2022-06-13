@@ -238,4 +238,8 @@ public class Post implements Serializable {
         averageRater.setRaterSection2((double) (sums[SECOND_RATER_INDEX]/counters[SECOND_RATER_INDEX]));
         averageRater.setRaterSection3((double) (sums[THIRD_RATER_INDEX]/counters[THIRD_RATER_INDEX]));
     }
+
+    public AverageRater getAverageRater() {
+        return averageRater;
+    }
 }

@@ -19,7 +19,38 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_allPostsFragment_to_editPostFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_allPostsFragment_to_postDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="editPostFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-172" />
+                            <option name="y" value="-639" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_editPostFragment_to_allPostsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_editPostFragment_to_postDetailsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -40,6 +71,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_linkPostFragment_to_editPostFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_linkPostFragment_to_postDetailsFragment">
                               <value>
                                 <LayoutPositions />
@@ -66,7 +102,17 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_postDetailsFragment_to_editPostFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_postDetailsFragment_to_linkPostFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_postDetailsFragment_to_ratePostFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -84,6 +130,15 @@
                             <option name="x" value="-431" />
                             <option name="y" value="68" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_ratePostFragment_to_postDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

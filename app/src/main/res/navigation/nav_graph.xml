@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_allPostsFragment_to_postDetailsFragment"
             app:destination="@id/postDetailsFragment" />
+        <action
+            android:id="@+id/action_allPostsFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/postDetailsFragment"
@@ -31,6 +34,9 @@
         <action
             android:id="@+id/action_postDetailsFragment_to_ratePostFragment"
             app:destination="@id/ratePostFragment" />
+        <action
+            android:id="@+id/action_postDetailsFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/linkPostFragment"
@@ -43,6 +49,9 @@
         <argument
             android:name="destinationPost"
             app:argType="com.example.musimatch.models.Post" />
+        <action
+            android:id="@+id/action_linkPostFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/ratePostFragment"
@@ -55,5 +64,20 @@
         <argument
             android:name="post"
             app:argType="com.example.musimatch.models.Post" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPostFragment"
+        android:name="com.example.musimatch.client.EditPostFragment"
+        android:label="fragment_edit_post"
+        tools:layout="@layout/fragment_edit_post" >
+        <argument
+            android:name="postToEdit"
+            app:argType="com.example.musimatch.models.Post" />
+        <action
+            android:id="@+id/action_editPostFragment_to_postDetailsFragment"
+            app:destination="@id/postDetailsFragment" />
+        <action
+            android:id="@+id/action_editPostFragment_to_allPostsFragment"
+            app:destination="@id/allPostsFragment" />
     </fragment>
 </navigation>
