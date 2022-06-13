@@ -74,6 +74,21 @@ public class PostModel {
         return relevantPosts;
     }
 
+    public ArrayList<Post> findLinkedPosts(Post destinationPost) {
+        ArrayList<Post> relevantPosts = new ArrayList<>();
+        for (Pair<Post, Post> pair : linkedPostsList)
+        {
+            if(pair.first.equals(destinationPost))
+            {
+                relevantPosts.add(pair.second);
+            }
+            else if (pair.second.equals(destinationPost)) {
+                relevantPosts.add(pair.first);
+            }
+        }
+        return relevantPosts;
+    }
+
     public void linkPosts(Post post1, Post post2)
     {
         if(!doesLinkAlreadyExist(post1, post2))

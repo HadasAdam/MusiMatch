@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".client.WatchLinkedPostsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/watchLinkedPosts_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_purple">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Linked Posts:"
+            android:textColor="@color/bright_light_blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/watchLinkedPosts_backBtn"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:text="Back"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:backgroundTint="@color/banana"
+            app:layout_constraintEnd_toStartOf="@+id/watchLinkedPosts_linkPostBtn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/watchLinkedPosts_linkPostBtn"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:text="Link"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:backgroundTint="@color/banana"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/watchLinkedPosts_backBtn"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/watchLinkedPosts_recycler"
+            android:layout_width="397dp"
+            android:layout_height="593dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/watchLinkedPosts_backBtn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

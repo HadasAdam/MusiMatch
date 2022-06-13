@@ -13,8 +13,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-604" />
-                            <option name="y" value="-261" />
+                            <option name="x" value="-693" />
+                            <option name="y" value="-258" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -39,8 +39,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-172" />
-                            <option name="y" value="-639" />
+                            <option name="x" value="-262" />
+                            <option name="y" value="-612" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -65,18 +65,13 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-251" />
-                            <option name="y" value="-254" />
+                            <option name="x" value="186" />
+                            <option name="y" value="-269" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_linkPostFragment_to_editPostFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_linkPostFragment_to_postDetailsFragment">
+                            <entry key="action_linkPostFragment_to_watchLinkedPostsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -107,12 +102,12 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_postDetailsFragment_to_linkPostFragment">
+                            <entry key="action_postDetailsFragment_to_ratePostFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_postDetailsFragment_to_ratePostFragment">
+                            <entry key="action_postDetailsFragment_to_watchLinkedPostsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -127,13 +122,39 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-431" />
-                            <option name="y" value="68" />
+                            <option name="x" value="-243" />
+                            <option name="y" value="74" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
                             <entry key="action_ratePostFragment_to_postDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="watchLinkedPostsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-71" />
+                            <option name="y" value="-262" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_watchLinkedPostsFragment_to_linkPostFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_watchLinkedPostsFragment_to_postDetailsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
