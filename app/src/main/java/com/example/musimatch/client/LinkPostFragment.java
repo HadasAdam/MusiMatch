@@ -53,7 +53,7 @@ public class LinkPostFragment extends Fragment {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateToBackPostDetails();
+                navigateBackToWatchLinkedPosts();
             }
         });
 
@@ -70,7 +70,7 @@ public class LinkPostFragment extends Fragment {
             public void onItemClick(int position) {
                 Post myPost = postsArrayList.get(position);
                 linkPostToPost(myPost, destinationPost);
-                navigateToBackPostDetails();
+                navigateBackToWatchLinkedPosts();
             }
         });
 
@@ -85,14 +85,10 @@ public class LinkPostFragment extends Fragment {
         }
     }
 
-    private void navigateToBackPostDetails()
+    private void navigateBackToWatchLinkedPosts()
     {
-        try {
-            LinkPostFragmentDirections.ActionLinkPostFragmentToPostDetailsFragment action = LinkPostFragmentDirections.actionLinkPostFragmentToPostDetailsFragment(destinationPost);
-            Navigation.findNavController(view).navigate(action);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        LinkPostFragmentDirections.ActionLinkPostFragmentToWatchLinkedPostsFragment action =
+                LinkPostFragmentDirections.actionLinkPostFragmentToWatchLinkedPostsFragment(destinationPost);
+        Navigation.findNavController(view).navigate(action);
     }
 }

@@ -29,29 +29,26 @@
             android:name="post"
             app:argType="com.example.musimatch.models.Post" />
         <action
-            android:id="@+id/action_postDetailsFragment_to_linkPostFragment"
-            app:destination="@id/linkPostFragment" />
-        <action
             android:id="@+id/action_postDetailsFragment_to_ratePostFragment"
             app:destination="@id/ratePostFragment" />
         <action
             android:id="@+id/action_postDetailsFragment_to_editPostFragment"
             app:destination="@id/editPostFragment" />
+        <action
+            android:id="@+id/action_postDetailsFragment_to_watchLinkedPostsFragment"
+            app:destination="@id/watchLinkedPostsFragment" />
     </fragment>
     <fragment
         android:id="@+id/linkPostFragment"
         android:name="com.example.musimatch.client.LinkPostFragment"
         android:label="fragment_link_post"
         tools:layout="@layout/fragment_link_post" >
-        <action
-            android:id="@+id/action_linkPostFragment_to_postDetailsFragment"
-            app:destination="@id/postDetailsFragment" />
         <argument
             android:name="destinationPost"
             app:argType="com.example.musimatch.models.Post" />
         <action
-            android:id="@+id/action_linkPostFragment_to_editPostFragment"
-            app:destination="@id/editPostFragment" />
+            android:id="@+id/action_linkPostFragment_to_watchLinkedPostsFragment"
+            app:destination="@id/watchLinkedPostsFragment" />
     </fragment>
     <fragment
         android:id="@+id/ratePostFragment"
@@ -79,5 +76,20 @@
         <action
             android:id="@+id/action_editPostFragment_to_allPostsFragment"
             app:destination="@id/allPostsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/watchLinkedPostsFragment"
+        android:name="com.example.musimatch.client.WatchLinkedPostsFragment"
+        android:label="fragment_watch_linked_posts"
+        tools:layout="@layout/fragment_watch_linked_posts" >
+        <action
+            android:id="@+id/action_watchLinkedPostsFragment_to_postDetailsFragment"
+            app:destination="@id/postDetailsFragment" />
+        <argument
+            android:name="destinationPost"
+            app:argType="com.example.musimatch.models.Post" />
+        <action
+            android:id="@+id/action_watchLinkedPostsFragment_to_linkPostFragment"
+            app:destination="@id/linkPostFragment" />
     </fragment>
 </navigation>

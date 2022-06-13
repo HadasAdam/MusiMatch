@@ -112,7 +112,8 @@ public class PostDetailsFragment extends Fragment {
         }
 
         linkedPosts.setOnClickListener(v -> {
-            PostDetailsFragmentDirections.ActionPostDetailsFragmentToLinkPostFragment action = PostDetailsFragmentDirections.actionPostDetailsFragmentToLinkPostFragment(post);
+            PostDetailsFragmentDirections.ActionPostDetailsFragmentToWatchLinkedPostsFragment action =
+                    PostDetailsFragmentDirections.actionPostDetailsFragmentToWatchLinkedPostsFragment(post);
             Navigation.findNavController(view).navigate(action);
         });
 
