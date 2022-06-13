@@ -44,6 +44,21 @@
             app:layout_constraintStart_toStartOf="@+id/postDetails_title"
             app:layout_constraintTop_toTopOf="@+id/postDetails_title" />
 
+        <Button
+            android:id="@+id/postDetails_addCommentButton"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Add"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/grayish_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.853"
+            app:layout_constraintStart_toEndOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_rate3title" />
+
         <TextView
             android:id="@+id/postDetails_content"
             android:layout_width="0dp"
@@ -87,9 +102,9 @@
             android:id="@+id/postDetails_tags"
             android:layout_width="215dp"
             android:layout_height="20dp"
+            android:fontFamily="sans-serif-smallcaps"
             android:text="@string/post"
             android:textColor="@color/bright_light_blue"
-            android:fontFamily="sans-serif-smallcaps"
             android:textSize="12sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="@+id/textView8"
@@ -239,7 +254,6 @@
             android:layout_width="409dp"
             android:layout_height="478dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />

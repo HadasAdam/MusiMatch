@@ -33,6 +33,7 @@ public class PostDetailsFragment extends Fragment {
 
     View view;
     Button editButton;
+    Button addCommentButton;
     TextView postTitle;
     TextView postLyrics;
     TextView linkedPosts;
@@ -74,6 +75,7 @@ public class PostDetailsFragment extends Fragment {
     private void linkComponents()
     {
         editButton = view.findViewById(R.id.postDetails_editButton);
+        addCommentButton = view.findViewById(R.id.postDetails_addCommentButton);
         postTitle = view.findViewById(R.id.postDetails_title);
         postLyrics = view.findViewById(R.id.postDetails_content);
         linkedPosts = view.findViewById(R.id.postDetails_linkedPosts);
@@ -99,17 +101,31 @@ public class PostDetailsFragment extends Fragment {
         tags.setText(getTagsString(post));
         rate.setText(String.valueOf(post.getAveragePostRate()));
         uploaderUsername.setText(post.getCreator().getUsername());
+        editButton.setOnClickListener(v -> {
+            PostDetailsFragmentDirections.ActionPostDetailsFragmentToEditPostFragment action =
+                    PostDetailsFragmentDirections.actionPostDetailsFragmentToEditPostFragment(post);
+            Navigation.findNavController(view).navigate(action);
+        });
+        addCommentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PostDetailsFragmentDirections.ActionPostDetailsFragmentToCommentToPostFragment action =
+                        PostDetailsFragmentDirections.actionPostDetailsFragmentToCommentToPostFragment(post);
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
 
-        if(!post.getCreator().equals(LoginService.getUser()))
+        if(LoginService.getUser() != null)
+        {
+            if(!post.getCreator().equals(LoginService.getUser()))
+            {
+                editButton.setVisibility(View.INVISIBLE);
+            }
+        }
+        else
         {
             editButton.setVisibility(View.INVISIBLE);
-        }
-        else {
-            editButton.setOnClickListener(v -> {
-                PostDetailsFragmentDirections.ActionPostDetailsFragmentToEditPostFragment action =
-                        PostDetailsFragmentDirections.actionPostDetailsFragmentToEditPostFragment(post);
-                Navigation.findNavController(view).navigate(action);
-            });
+            addCommentButton.setVisibility(View.INVISIBLE);
         }
 
         linkedPosts.setOnClickListener(v -> {
@@ -132,10 +148,7 @@ public class PostDetailsFragment extends Fragment {
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(linearLayoutManager);
         LayoutInflater layoutInflater = getLayoutInflater();
-
-        // TODO: find a way to initialize the comments properly
-        CommentAdapter adapter = new CommentAdapter(layoutInflater);
-        adapter.setData(commentsArrayList);
+        CommentAdapter adapter = new CommentAdapter(layoutInflater, post);
         recyclerView.setAdapter(adapter);
     }
 

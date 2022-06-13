@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_purple"
-    tools:context=".client.CommentToPost">
+    tools:context=".client.CommentToPostFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,61 +13,63 @@
 
         <Button
             android:id="@+id/SaveCommentBtn"
-            android:layout_width="121dp"
-            android:layout_height="72dp"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:fontFamily="sans-serif-smallcaps"
             android:text="Save"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:backgroundTint="@color/grayish_blue"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.721"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/CancelCommentBtn"
-            app:layout_constraintTop_toBottomOf="@+id/newComment"
-            app:layout_constraintVertical_bias="0.502" />
+            app:layout_constraintTop_toBottomOf="@+id/commentfragment_content" />
+
+        <Button
+            android:id="@+id/CancelCommentBtn"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="48dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Cancel"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/grayish_blue"
+            app:layout_constraintEnd_toStartOf="@+id/SaveCommentBtn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/commentfragment_content" />
 
         <TextView
             android:id="@+id/textViewCommentPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:fontFamily="sans-serif-smallcaps"
             android:text="Enter your comment"
-            android:textColor="#fff"
-            android:textSize="32sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/bright_light_blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.072" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/newComment"
-            android:layout_width="338dp"
-            android:layout_height="158dp"
+            android:id="@+id/commentfragment_content"
+            android:layout_width="329dp"
+            android:layout_height="216dp"
+            android:layout_marginTop="36dp"
             android:background="@drawable/text_border"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine"
             android:textSize="22sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewCommentPage"
-            app:layout_constraintVertical_bias="0.354"
             tools:ignore="SpeakableTextPresentCheck" />
-
-        <Button
-            android:id="@+id/CancelCommentBtn"
-            android:layout_width="121dp"
-            android:layout_height="72dp"
-            android:layout_marginStart="40dp"
-            android:text="Cancel"
-            android:textSize="20sp"
-            app:backgroundTint="@color/grayish_blue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newComment"
-            app:layout_constraintVertical_bias="0.502" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
