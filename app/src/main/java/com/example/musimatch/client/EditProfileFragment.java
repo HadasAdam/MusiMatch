@@ -109,7 +109,7 @@ public class EditProfileFragment extends Fragment {
 
     private void onClickCancelButton() { // cancel the edit of the profile
 
-        Log.d("Log", "cancel clicked");
+        Log.d(TAG, "cancel clicked");
         AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
         alertDialogBuilder.setTitle("profile edit canceled");
         AlertDialog alertDialog = alertDialogBuilder.create();
@@ -118,7 +118,7 @@ public class EditProfileFragment extends Fragment {
 
     private void onClickSaveButton() { // save changes in user profile
 
-        Log.d("Log", "save clicked");
+        Log.d(TAG, "save clicked");
 
         AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
         alertDialogBuilder.setTitle("profile edit success");

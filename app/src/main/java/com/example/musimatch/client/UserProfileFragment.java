@@ -2,6 +2,7 @@ package com.example.musimatch.client;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,14 +51,15 @@ public class UserProfileFragment extends Fragment {
     }
 
     private void editUser() {
+        Log.d(TAG, "edit user via profile");
 
     }
 
     private void logout() {
-
+        Log.d(TAG, "logout user via profile");
     }
 
     private void addNewPost() {
-
+        Log.d(TAG, "add new post  via profile");
     }
 }
