@@ -6,6 +6,8 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9e84cc96257ee1c87ee83c8df4ef19d2/transformed/multidex-2.0.0/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9e84cc96257ee1c87ee83c8df4ef19d2/transformed/multidex-2.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9e84cc96257ee1c87ee83c8df4ef19d2/transformed/multidex-2.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5508e7f80aba879b8f177fdf05aee268/transformed/multidex-2.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5508e7f80aba879b8f177fdf05aee268/transformed/multidex-2.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
