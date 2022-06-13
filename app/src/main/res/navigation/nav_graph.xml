@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_postDetailsFragment_to_watchLinkedPostsFragment"
             app:destination="@id/watchLinkedPostsFragment" />
+        <action
+            android:id="@+id/action_postDetailsFragment_to_commentToPostFragment"
+            app:destination="@id/commentToPostFragment" />
     </fragment>
     <fragment
         android:id="@+id/linkPostFragment"
@@ -91,5 +94,17 @@
         <action
             android:id="@+id/action_watchLinkedPostsFragment_to_linkPostFragment"
             app:destination="@id/linkPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentToPostFragment"
+        android:name="com.example.musimatch.client.CommentToPostFragment"
+        android:label="fragment_comment_to_post"
+        tools:layout="@layout/fragment_comment_to_post" >
+        <action
+            android:id="@+id/action_commentToPostFragment_to_postDetailsFragment"
+            app:destination="@id/postDetailsFragment" />
+        <argument
+            android:name="postToCommentOn"
+            app:argType="com.example.musimatch.models.Post" />
     </fragment>
 </navigation>

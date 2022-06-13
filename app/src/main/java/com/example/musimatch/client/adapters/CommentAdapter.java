@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.musimatch.R;
 import com.example.musimatch.models.Comment;
+import com.example.musimatch.models.Post;
+import com.example.musimatch.models.PostModel;
 
 
 import java.util.List;
@@ -19,6 +21,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
 
     public CommentAdapter(LayoutInflater inflater){
         this.inflater = inflater;
+    }
+
+    public CommentAdapter(LayoutInflater inflater, Post post){
+        this.inflater = inflater;
+        this.data = post.getComments();
     }
 
     public interface OnItemClickListener {

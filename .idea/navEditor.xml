@@ -34,6 +34,27 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="commentToPostFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-589" />
+                            <option name="y" value="91" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_commentToPostFragment_to_postDetailsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="editPostFragment">
                     <value>
                       <LayoutPositions>
