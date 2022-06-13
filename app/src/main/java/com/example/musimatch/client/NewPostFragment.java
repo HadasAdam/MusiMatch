@@ -1,26 +1,37 @@
 package com.example.musimatch.client;
 
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.example.musimatch.R;
+import com.example.musimatch.models.AverageRater;
+import com.example.musimatch.models.Post;
+import com.example.musimatch.models.PostModel;
+import com.example.musimatch.models.TagModel;
+import com.example.musimatch.models.User;
+import com.example.musimatch.models.UserModel;
+import com.example.musimatch.models.enums.PostType;
+import com.example.musimatch.services.LoginService;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NewPostFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class NewPostFragment extends Fragment {
 
     private static final String TAG = "NewPostFragment";
 
+    View view;
     EditText titleET;
     Spinner postTypeSpinner;
     EditText lyricsET;
@@ -29,51 +40,21 @@ public class NewPostFragment extends Fragment {
     Spinner thirdTag;
     Button saveBtn;
     Button cancelBtn;
-    ProgressBar progressBar;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public NewPostFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewPostFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NewPostFragment newInstance(String param1, String param2) {
-        NewPostFragment fragment = new NewPostFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_new_post, container, false);
+        view = inflater.inflate(R.layout.fragment_new_post, container, false);
         titleET = view.findViewById(R.id.newPostTitle);
         postTypeSpinner = view.findViewById(R.id.newPostPostTypeSpinner);
         lyricsET = view.findViewById(R.id.newPostLyricsMultiLine);
@@ -82,17 +63,61 @@ public class NewPostFragment extends Fragment {
         thirdTag = view.findViewById(R.id.newPostTags3);
         saveBtn = view.findViewById(R.id.newPostSaveButton);
         cancelBtn = view.findViewById(R.id.newPostCancelButton);
-        progressBar = view.findViewById(R.id.progressBar);
         saveBtn.setOnClickListener(v -> onClickSaveButton());
         cancelBtn.setOnClickListener(v -> onClickCancelButton());
+        initializeTagSpinner(firstTag, 0);
+        initializeTagSpinner(secondTag, 1);
+        initializeTagSpinner(thirdTag, 2);
         return view;
     }
 
-    private void onClickSaveButton() { // save new post
-        progressBar.setVisibility(View.VISIBLE);
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void onClickSaveButton() {
+        PostModel.instance.createPost(new Post(321L, titleET.getText().toString(),
+                lyricsET.getText().toString(), null, LoginService.getUser(),
+                PostType.values()[postTypeSpinner.getSelectedItemPosition()]));
+        navigateToUserProfile();
     }
 
-    private void onClickCancelButton() { // cancel new post
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void onClickCancelButton() {
+        navigateToUserProfile();
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void navigateToUserProfile()
+    {
+        User user = LoginService.getUser();
+        NewPostFragmentDirections.ActionNewPostFragmentToUserProfileFragment4 action =
+                NewPostFragmentDirections.actionNewPostFragmentToUserProfileFragment4(user);
+        Navigation.findNavController(view).navigate(action);
+    }
+
+    private void initializeTagSpinner(Spinner spinner, int index)
+    {
+        String[] tags = new String[TagModel.instance.getAllTags().size() + 1];
+        tags[0] = "";
+        for(int i = 1; i <= TagModel.instance.getAllTags().size(); i++)
+        {
+            tags[i] = TagModel.instance.getAllTags().get(i-1).getName();
+        }
+
+        ArrayAdapter<String> dataAdapter;
+        dataAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_spinner_item, tags);
+
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
 }

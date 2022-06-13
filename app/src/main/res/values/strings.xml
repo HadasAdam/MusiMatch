@@ -31,8 +31,8 @@
     <string name="the_default_web_client_id" translatable="false">1024298745200-45qq75i1p8dc2ionl3utmf86r2vcv1a1.apps.googleusercontent.com</string>
 
     <string-array name="postTypeSpinner">
-        <item>Song</item>
-        <item>Tone</item>
+        <item>POEM</item>
+        <item>MELODY</item>
     </string-array>
 
     <string-array name="Tags1">
