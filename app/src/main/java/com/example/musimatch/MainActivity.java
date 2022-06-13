@@ -2,10 +2,12 @@ package com.example.musimatch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -40,13 +42,18 @@ public class MainActivity extends AppCompatActivity {
     private MenuItem signOutButton;
     private MenuItem signInButton;
     private MenuItem loggedInUsername;
-    public Button MyProfileBtn;
+    private Button homeBtn;
+    private Button profileBtn;
+    private Button newPostBtn;
     private Connection connect;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        homeBtn = findViewById(R.id.mainActivity_homeBtn);
+        profileBtn = findViewById(R.id.mainActivity_MyProfile);
+        newPostBtn = findViewById(R.id.mainActivity_newPostBtn);
         setContentView(R.layout.activity_main);
     }
 
@@ -144,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
