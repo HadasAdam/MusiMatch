@@ -175,12 +175,67 @@ public class PostModel {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initializePostsList()
     {
-        for(int i = 0; i < 10; i++)
-        {
-            posts.add(new Post((long)i, "Post" + i, "I love cats\nThey are so cute\nI want to have one",
-                    "", UserModel.instance.findUserById((long)i),
-                    PostType.POEM));
-        }
+        posts.add(new Post(0L, "Girls Like Her", "I wish there were\nmore girls like her\nBecause maybe then" +
+                "\nI'd feel better\nShe doesn't love me\nand that's so sad\nbut nevermind",
+                null, UserModel.instance.findUserById(0L),
+                PostType.POEM));
+        posts.get(0).addTag(TagModel.instance.findTagById(0L));
+        posts.get(0).addTag(TagModel.instance.findTagById(1L));
+
+        posts.add(new Post(1L, "Angels Are Real", "He's an angel\nThis I know\nWho looks like a devil" +
+                "\nBut I love him so!",
+                null, UserModel.instance.findUserById(1L),
+                PostType.POEM));
+        posts.get(1).addTag(TagModel.instance.findTagById(3L));
+        posts.get(1).addTag(TagModel.instance.findTagById(5L));
+
+
+        posts.add(new Post(2L, "Pain", "It rhymes with rain\nNot hard to gain\nof course I'm speaking of" +
+                "\nmy internal pain",
+                null, UserModel.instance.findUserById(1L),
+                PostType.POEM));
+        posts.get(2).addTag(TagModel.instance.findTagById(4L));
+        posts.get(2).addTag(TagModel.instance.findTagById(11L));
+        posts.get(2).addTag(TagModel.instance.findTagById(9L));
+
+
+        posts.add(new Post(3L, "Love Can Heal", "Love can heal\nBodies and souls\nbut love can kill" +
+                "\nAnd change all your goals\nI want to stay single\nAnd ready to mingle",
+                null, UserModel.instance.findUserById(2L),
+                PostType.POEM));
+        posts.get(3).addTag(TagModel.instance.findTagById(7L));
+        posts.get(3).addTag(TagModel.instance.findTagById(8L));
+
+
+        posts.add(new Post(4L, "La La La", "I'm covering my ears\nlike a kid\nWhen your words mean nothing" +
+                "\nI go la la la\nturning up the volume\nwhen you speak\ncause if my heart\ncant's stop it\nI'll find a way\nto block it",
+                null, UserModel.instance.findUserById(2L),
+                PostType.POEM));
+        posts.get(4).addTag(TagModel.instance.findTagById(10L));
+        posts.get(4).addTag(TagModel.instance.findTagById(11L));
+
+
+        posts.add(new Post(5L, "Instagram Guy", "Uses filters\nLike a drama queen\nLooks like the faith" +
+                "\nBut feels like a sin",
+                null, UserModel.instance.findUserById(2L),
+                PostType.POEM));
+        posts.get(5).addTag(TagModel.instance.findTagById(12L));
+        posts.get(5).addTag(TagModel.instance.findTagById(1L));
+
+
+        posts.add(new Post(6L, "Over Now", "It's Over Now\nOver Now\nNo body cares" +
+                "\n\nIt's Over Now\nOver Now\nNo body cares\n\nIt's Over Now\nOver Now\nNo body cares",
+                null, UserModel.instance.findUserById(3L),
+                PostType.POEM));
+        posts.get(6).addTag(TagModel.instance.findTagById(9L));
+
+
+        posts.add(new Post(7L, "Trupi Rupi", "I love saying nothing\nI love food too\nTrupi Rupi" +
+                "\nJust say I do",
+                null, UserModel.instance.findUserById(4L),
+                PostType.POEM));
+        posts.get(7).addTag(TagModel.instance.findTagById(8L));
+        posts.get(7).addTag(TagModel.instance.findTagById(1L));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

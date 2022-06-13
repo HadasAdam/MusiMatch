@@ -77,10 +77,25 @@ public class UserModel {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initializeUsersList()
     {
-        for(int i = 0; i < 10; i++)
-        {
-            users.add(new User((long)i,"user" + i, i + "email@gmail.com", UserType.POET, "john" + i,
-                    "Adams" + i));
-        }
+        users.add(new User(0L,"AnakinSkywalker",  "darthvader@gmail.com", UserType.POET, "Anakin",
+                "Skywalker"));
+        users.add(new User(1L,"ObiWan67",  "starwars33@gmail.com", UserType.POET, "Obi Wan",
+                "Kenobi"));
+        users.add(new User(2L,"IcyHearted",  "ice123@gmail.com", UserType.POET, "John",
+                "Williams"));
+        users.add(new User(3L,"NoaBieber",  "bieber94@gmail.com", UserType.POET, "Noa",
+                "Siman Tov"));
+        users.add(new User(4L,"Venessa22",  "venessa2000@gmail.com", UserType.POET, "Venessa",
+                "Adams"));
+        users.add(new User(5L,"Lonely",  "imsolonely@gmail.com", UserType.POET, "Ben",
+                "Avraham"));
+        users.add(new User(6L,"LoveYou",  "loveIsCatchy@gmail.com", UserType.POET, "Nina",
+                "Roberts"));
+        users.add(new User(7L,"Kiki",  "kiki12@gmail.com", UserType.POET, "Drew",
+                "Loren"));
+        users.add(new User(8L,"GoogleMan",  "google11@gmail.com", UserType.POET, "Fred",
+                "Van"));
+        users.add(new User(9L,"JavaFan",  "java16@gmail.com", UserType.POET, "Shawn",
+                "Suns"));
     }
 }
