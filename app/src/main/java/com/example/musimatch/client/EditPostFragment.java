@@ -1,5 +1,8 @@
 package com.example.musimatch.client;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -7,6 +10,7 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +38,7 @@ public class EditPostFragment extends Fragment {
 
     private static final String TAG = "EditPostFragment";
 
-    View view;
+    private View view;
     Post postToEdit;
     EditText titleET;
     Spinner postTypeSpinner;
@@ -136,15 +140,27 @@ public class EditPostFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void onClickSaveButton() {
         updatePost();
+        AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
+        alertDialogBuilder.setTitle("The post has been successfully updated");
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
         navigateToPostDetails();
     }
 
     private void onClickCancelButton() {
+        AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
+        alertDialogBuilder.setTitle("Post update canceled");
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
         navigateToPostDetails();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void onClickDeleteButton() {
+        AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
+        alertDialogBuilder.setTitle("The post has been successfully deleted");
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
         PostModel.instance.removePost(postToEdit);
         navigateToAllPostsFragment();
     }
@@ -224,5 +240,22 @@ public class EditPostFragment extends Fragment {
         }
         postToEdit.setTags(newSelectedTags);
         PostModel.instance.updatePost(postToEdit);
+    }
+
+    private AlertDialog.Builder getAlertDialogBuilder() {
+        Context context = view.getContext();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        // set dialog message
+        alertDialogBuilder
+                .setMessage("Click ok to exit")
+                .setCancelable(false)
+                .setNegativeButton("Ok",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+        return alertDialogBuilder;
     }
 }

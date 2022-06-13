@@ -1,7 +1,12 @@
 package com.example.musimatch.client;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +26,7 @@ public class EditProfileFragment extends Fragment {
 
     private static final String TAG = "EditProfileFragment";
 
+    private View view;
     EditText firstName;
     EditText lastName;
     EditText email;
@@ -71,7 +77,7 @@ public class EditProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
+        view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
         firstName = view.findViewById(R.id.editProfileFirstName);
         lastName = view.findViewById(R.id.editProfileLastName);
         email = view.findViewById(R.id.editProfileEmail);
@@ -84,11 +90,42 @@ public class EditProfileFragment extends Fragment {
         return view;
     }
 
+    private AlertDialog.Builder getAlertDialogBuilder() {
+        Context context = view.getContext();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        // set dialog message
+        alertDialogBuilder
+                .setMessage("Click ok to exit")
+                .setCancelable(false)
+                .setNegativeButton("Ok",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+        return alertDialogBuilder;
+    }
+
     private void onClickCancelButton() { // cancel the edit of the profile
 
+
+        Log.d(TAG, "click cancel");
+        AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
+        alertDialogBuilder.setTitle("profile edit canceled");
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     private void onClickSaveButton() { // save changes in user profile
 
+
+
+        Log.d(TAG, "click save");
+        AlertDialog.Builder alertDialogBuilder = getAlertDialogBuilder();
+        alertDialogBuilder.setTitle("profile edit success");
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
+
 }
