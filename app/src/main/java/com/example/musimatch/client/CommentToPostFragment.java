@@ -16,6 +16,7 @@ import android.widget.EditText;
 import com.example.musimatch.R;
 import com.example.musimatch.models.Comment;
 import com.example.musimatch.models.Post;
+import com.example.musimatch.models.PostModel;
 import com.example.musimatch.services.LoginService;
 
 import java.util.Date;
@@ -57,7 +58,7 @@ public class CommentToPostFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void onClickSaveButton() {
-        Comment comment = new Comment((postToCommentOn.getId()*23), LoginService.getUser(),
+        Comment comment = new Comment(PostModel.instance.getSequence(), LoginService.getUser(),
                 postToCommentOn, commentContent.getText().toString(), new Date());
         postToCommentOn.addComment(comment);
         navigateToPostDetails();

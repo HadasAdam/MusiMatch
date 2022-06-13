@@ -73,7 +73,7 @@ public class NewPostFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void onClickSaveButton() {
-        PostModel.instance.createPost(new Post(321L, titleET.getText().toString(),
+        PostModel.instance.createPost(new Post(PostModel.instance.getSequence(), titleET.getText().toString(),
                 lyricsET.getText().toString(), null, LoginService.getUser(),
                 PostType.values()[postTypeSpinner.getSelectedItemPosition()]));
         navigateToUserProfile();

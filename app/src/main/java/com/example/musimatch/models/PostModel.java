@@ -9,11 +9,16 @@ import java.util.ArrayList;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class PostModel {
+    Long sequence = 400L;
     ArrayList<Post> posts = new ArrayList<>();
     ArrayList<Pair<Post, Post>> linkedPostsList = new ArrayList<>();
     ArrayList<Pair<Post, Tag>> tagsOfPosts = new ArrayList<>();
 
     public final static PostModel instance = new PostModel();
+
+    public Long getSequence() {
+        return (sequence++);
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private PostModel() {
