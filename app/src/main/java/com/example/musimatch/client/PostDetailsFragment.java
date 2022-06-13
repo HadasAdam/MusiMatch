@@ -34,6 +34,7 @@ public class PostDetailsFragment extends Fragment {
     View view;
     Button editButton;
     Button addCommentButton;
+    Button backButton;
     TextView postTitle;
     TextView postLyrics;
     TextView linkedPosts;
@@ -89,6 +90,7 @@ public class PostDetailsFragment extends Fragment {
         rate2title = view.findViewById(R.id.postDetails_rate2title);
         rate3star = view.findViewById(R.id.postDetails_rate3star);
         rate3title = view.findViewById(R.id.postDetails_rate3title);
+        backButton = view.findViewById(R.id.postDetails_backBtn);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -120,6 +122,12 @@ public class PostDetailsFragment extends Fragment {
                 PostDetailsFragmentDirections.ActionPostDetailsFragmentToCommentToPostFragment action =
                         PostDetailsFragmentDirections.actionPostDetailsFragmentToCommentToPostFragment(post);
                 Navigation.findNavController(view).navigate(action);
+            }
+        });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_postDetailsFragment_to_allPostsFragment);
             }
         });
 

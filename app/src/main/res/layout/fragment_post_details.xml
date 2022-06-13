@@ -11,6 +11,20 @@
         android:layout_height="match_parent"
         android:background="@color/dark_purple">
 
+        <Button
+            android:id="@+id/postDetails_backBtn"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="28dp"
+            android:text="Back"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:backgroundTint="@color/banana"
+            app:layout_constraintEnd_toStartOf="@+id/postDetails_addCommentButton"
+            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintStart_toEndOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/postDetails_rate2title" />
+
         <TextView
             android:id="@+id/postDetails_title"
             android:layout_width="0dp"
@@ -55,7 +69,7 @@
             android:textStyle="bold"
             app:backgroundTint="@color/grayish_blue"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.853"
+            app:layout_constraintHorizontal_bias="0.932"
             app:layout_constraintStart_toEndOf="@+id/textView20"
             app:layout_constraintTop_toBottomOf="@+id/postDetails_rate3title" />
 

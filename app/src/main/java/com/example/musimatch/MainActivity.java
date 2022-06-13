@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private MenuItem signOutButton;
     private MenuItem signInButton;
     private MenuItem loggedInUsername;
-    public Button MyProfileBtn;
     private Connection connect;
 
 
