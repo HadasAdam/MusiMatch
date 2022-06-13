@@ -96,6 +96,7 @@ public class PostDetailsFragment extends Fragment {
         postLyrics.setText(post.getPoemLyrics() != null ? post.getPoemLyrics() + "" : "");
         linkedPosts.setText(post.getLinkedPosts() != null ? post.getLinkedPosts().size() + "" : "0");
         comments.setText(post.getComments() != null ? post.getComments().size() + "" : "");
+        tags.setText(getTagsString(post));
         rate.setText(String.valueOf(post.getAveragePostRate()));
         uploaderUsername.setText(post.getCreator().getUsername());
 
@@ -155,5 +156,15 @@ public class PostDetailsFragment extends Fragment {
         rate1star.setText(String.valueOf(post.getAverageRater().getRaterSection1()));
         rate2star.setText(String.valueOf(post.getAverageRater().getRaterSection2()));
         rate3star.setText(String.valueOf(post.getAverageRater().getRaterSection3()));
+    }
+
+    private String getTagsString(Post post)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < post.getTags().size(); i++)
+        {
+            stringBuilder.append(" #").append(post.getTags().get(i).getName());
+        }
+        return stringBuilder.toString();
     }
 }

@@ -111,6 +111,8 @@
         android:layout_marginBottom="2dp"
         android:text="@string/post"
         android:textColor="@color/bright_light_blue"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-smallcaps"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toStartOf="@+id/postPoem_links"
