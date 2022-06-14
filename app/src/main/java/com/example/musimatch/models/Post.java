@@ -235,22 +235,36 @@ public class Post implements Serializable {
             }
         }
 
-        if (sums[FIRST_RATER_INDEX] > 0 && sums[SECOND_RATER_INDEX] > 0 && sums[THIRD_RATER_INDEX] > 0)
-        {
+        if (sums[FIRST_RATER_INDEX] > 0) {
             averageRater.setRaterSection1((double) (sums[FIRST_RATER_INDEX]/counters[FIRST_RATER_INDEX]));
-            averageRater.setRaterSection2((double) (sums[SECOND_RATER_INDEX]/counters[SECOND_RATER_INDEX]));
-            averageRater.setRaterSection3((double) (sums[THIRD_RATER_INDEX]/counters[THIRD_RATER_INDEX]));
-            updateAverageRate();
         }
+        if (sums[SECOND_RATER_INDEX] > 0) {
+            averageRater.setRaterSection2((double) (sums[SECOND_RATER_INDEX]/counters[SECOND_RATER_INDEX]));
+        }
+        if (sums[THIRD_RATER_INDEX] > 0) {
+            averageRater.setRaterSection3((double) (sums[THIRD_RATER_INDEX]/counters[THIRD_RATER_INDEX]));
+        }
+        updateAverageRate();
+
     }
 
 
     public void updateAverageRate() {
         double sum = 0;
-        double counter = 3;
-        sum += this.getAverageRater().getRaterSection1() +
-                this.getAverageRater().getRaterSection2() +
-                this.getAverageRater().getRaterSection3();
+        double counter = 0;
+        if (this.getAverageRater().getRaterSection1() > 0) {
+            sum += this.getAverageRater().getRaterSection1();
+            counter++;
+        }
+        if (this.getAverageRater().getRaterSection2() > 0) {
+            sum += this.getAverageRater().getRaterSection2();
+            counter++;
+        }
+        if (this.getAverageRater().getRaterSection3() > 0) {
+            sum += this.getAverageRater().getRaterSection3();
+            counter++;
+        }
+
         if (sum > 0) {
             this.setAveragePostRate(round((sum/counter),1));
         }

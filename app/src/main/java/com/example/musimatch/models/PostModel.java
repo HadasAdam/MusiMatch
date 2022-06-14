@@ -27,6 +27,7 @@ public class PostModel {
     private PostModel() {
         initializePostsList();
         initializeLinkedPostsList();
+        initializeSerialRaters();
     }
 
     public ArrayList<Post> getAllPosts()
@@ -143,24 +144,22 @@ public class PostModel {
 
     public void addOrUpdateSerialRater(Post post, SerialRater serialRater)
     {
+        boolean found = false;
         if(!post.getCreator().equals(LoginService.getUser()))
         {
             for(int i = 0; i < post.getSerialRaters().size(); i++)
             {
-                if(post.getSerialRaters().get(i).getUserWhoRated().equals(serialRater.getUserWhoRated()))
+                if(post.getSerialRaters().get(i).getUserWhoRated().getId().equals(serialRater.getUserWhoRated().getId()))
                 {
-                    removeOldSerialRater(post, i);
+                    found = true;
+                    post.getSerialRaters().get(i).setValue(serialRater.getValue());
                 }
             }
-            post.addSerialRater(serialRater);
+            if(!found)
+            {
+                post.addSerialRater(serialRater);
+            }
         }
-    }
-
-    private void removeOldSerialRater(Post post, int i)
-    {
-        ArrayList<SerialRater> newSerialRaters = post.getSerialRaters();
-        newSerialRaters.remove(newSerialRaters.get(i));
-        post.setSerialRaters(newSerialRaters);
     }
 
     public ArrayList<Post> findPostsByUserAndPostType(User user, PostType postType) {
@@ -207,15 +206,7 @@ public class PostModel {
         posts.get(2).addTag(TagModel.instance.findTagById(9L));
         posts.get(2).addComment(new Comment(1L, UserModel.instance.findUserById(1L), posts.get(2), "wow lovely!!!", new Date()));
         posts.get(2).addComment(new Comment(2L, UserModel.instance.findUserById(3L), posts.get(2), "great song, gonna be a hit", new Date()));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 1, UserModel.instance.findUserById(3L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 1, UserModel.instance.findUserById(3L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 2, UserModel.instance.findUserById(3L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 3, UserModel.instance.findUserById(4L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 2, UserModel.instance.findUserById(4L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(4L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 2, UserModel.instance.findUserById(5L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 1, UserModel.instance.findUserById(5L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 2, UserModel.instance.findUserById(5L), posts.get(2)));
+
 
 
         posts.add(new Post(3L, "Love Can Heal", "Love can heal\nBodies and souls\nbut love can kill" +
@@ -246,15 +237,6 @@ public class PostModel {
         posts.get(5).addComment(new Comment(2L, UserModel.instance.findUserById(4L), posts.get(5), "not bad...", new Date()));
         posts.get(5).addComment(new Comment(3L, UserModel.instance.findUserById(9L), posts.get(5), "love it", new Date()));
         posts.get(5).addComment(new Comment(4L, UserModel.instance.findUserById(1L), posts.get(5), "i dont use instagram but it's looks good", new Date()));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 3, UserModel.instance.findUserById(3L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 3, UserModel.instance.findUserById(3L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 1, UserModel.instance.findUserById(3L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 4, UserModel.instance.findUserById(4L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 2, UserModel.instance.findUserById(4L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 1, UserModel.instance.findUserById(4L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 2, UserModel.instance.findUserById(8L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 3, UserModel.instance.findUserById(8L), posts.get(2)));
-        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 1, UserModel.instance.findUserById(8L), posts.get(2)));
 
 
         posts.add(new Post(6L, "Over Now", "It's Over Now\nOver Now\nNo body cares" +
@@ -318,9 +300,6 @@ public class PostModel {
         posts.get(11).addTag(TagModel.instance.findTagById(9L));
         posts.get(11).addComment(new Comment(1L, UserModel.instance.findUserById(5L), posts.get(11), "just let me sleep !!!", new Date()));
         posts.get(11).addComment(new Comment(1L, UserModel.instance.findUserById(5L), posts.get(11), "https://www.youtube.com/watch?v=AHh-Bmjaut0", new Date()));
-        addOrUpdateSerialRater(posts.get(11),new SerialRater(1L, PoemRateSections.DEPT ,null, 4, UserModel.instance.findUserById(3L), posts.get(11)));
-        addOrUpdateSerialRater(posts.get(11),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 5, UserModel.instance.findUserById(3L), posts.get(11)));
-        addOrUpdateSerialRater(posts.get(11),new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(3L), posts.get(11)));
 
 
 
@@ -329,6 +308,34 @@ public class PostModel {
         posts.get(12).addComment(new Comment(1L, UserModel.instance.findUserById(6L), posts.get(12), "this is a melody that i wrote to the poem that is linked to my post.\n" +
                 "ley me know what you guys think...", new Date()));
         posts.get(12).addComment(new Comment(2L, UserModel.instance.findUserById(1L), posts.get(12), "wow! that's what i'm talking about!!! thanks mate :)", new Date()));
+    }
+
+    private void initializeSerialRaters()
+    {
+        addOrUpdateSerialRater(posts.get(0),new SerialRater(1L, PoemRateSections.DEPT ,null, 3, UserModel.instance.findUserById(3L), posts.get(0)));
+        addOrUpdateSerialRater(posts.get(0),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 4, UserModel.instance.findUserById(3L), posts.get(0)));
+        addOrUpdateSerialRater(posts.get(0),new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(3L), posts.get(0)));
+        addOrUpdateSerialRater(posts.get(1),new SerialRater(1L, PoemRateSections.DEPT ,null, 1, UserModel.instance.findUserById(3L), posts.get(1)));
+        addOrUpdateSerialRater(posts.get(1),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 1, UserModel.instance.findUserById(3L), posts.get(1)));
+        addOrUpdateSerialRater(posts.get(1),new SerialRater(3L, PoemRateSections.RHYMES ,null, 2, UserModel.instance.findUserById(3L), posts.get(1)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 3, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 2, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 2, UserModel.instance.findUserById(5L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 1, UserModel.instance.findUserById(5L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 2, UserModel.instance.findUserById(5L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 3, UserModel.instance.findUserById(3L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 3, UserModel.instance.findUserById(3L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 1, UserModel.instance.findUserById(3L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 4, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 2, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 1, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(6),new SerialRater(1L, PoemRateSections.DEPT ,null, 2, UserModel.instance.findUserById(8L), posts.get(6)));
+        addOrUpdateSerialRater(posts.get(6),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 3, UserModel.instance.findUserById(8L), posts.get(6)));
+        addOrUpdateSerialRater(posts.get(6),new SerialRater(3L, PoemRateSections.RHYMES ,null, 1, UserModel.instance.findUserById(8L), posts.get(6)));
+        addOrUpdateSerialRater(posts.get(11),new SerialRater(1L, PoemRateSections.DEPT ,null, 4, UserModel.instance.findUserById(3L), posts.get(11)));
+        addOrUpdateSerialRater(posts.get(11),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 5, UserModel.instance.findUserById(3L), posts.get(11)));
+        addOrUpdateSerialRater(posts.get(11),new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(3L), posts.get(11)));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

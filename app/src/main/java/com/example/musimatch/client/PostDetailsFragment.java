@@ -69,6 +69,7 @@ public class PostDetailsFragment extends Fragment {
         initializeComponent();
         initializeComments();
         initializeRaters();
+        setOnClickListenersToRaters();
 
         return view;
     }
@@ -101,7 +102,7 @@ public class PostDetailsFragment extends Fragment {
         linkedPosts.setText(post.getLinkedPosts() != null ? post.getLinkedPosts().size() + "" : "0");
         comments.setText(post.getComments() != null ? post.getComments().size() + "" : "");
         tags.setText(getTagsString(post));
-        rate.setText(String.valueOf(post.getAveragePostRate()));
+        rate.setText(String.valueOf(post.getAveragePostRate()).substring(0,1));
         uploaderUsername.setText(post.getCreator().getUsername());
         uploaderUsername.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,10 +152,15 @@ public class PostDetailsFragment extends Fragment {
         });
 
         rate.setOnClickListener(v -> {
-            PostDetailsFragmentDirections.ActionPostDetailsFragmentToRatePostFragment action =
-                    PostDetailsFragmentDirections.actionPostDetailsFragmentToRatePostFragment(post);
-            Navigation.findNavController(view).navigate(action);
+            navigateToRatePostFragment();
         });
+    }
+
+    private void navigateToRatePostFragment()
+    {
+        PostDetailsFragmentDirections.ActionPostDetailsFragmentToRatePostFragment action =
+                PostDetailsFragmentDirections.actionPostDetailsFragmentToRatePostFragment(post);
+        Navigation.findNavController(view).navigate(action);
     }
 
     private void initializeComments() {
@@ -195,5 +201,45 @@ public class PostDetailsFragment extends Fragment {
             stringBuilder.append(" #").append(post.getTags().get(i).getName());
         }
         return stringBuilder.toString();
+    }
+
+    private void setOnClickListenersToRaters()
+    {
+        rate1star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToRatePostFragment();
+            }
+        });
+        rate2star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToRatePostFragment();
+            }
+        });
+        rate3star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToRatePostFragment();
+            }
+        });
+        rate1title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToRatePostFragment();
+            }
+        });
+        rate2title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToRatePostFragment();
+            }
+        });
+        rate3title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToRatePostFragment();
+            }
+        });
     }
 }

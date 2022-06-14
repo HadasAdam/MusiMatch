@@ -47,7 +47,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         linkedPosts.setText(currentPost.getLinkedPosts() != null ? currentPost.getLinkedPosts().size() + "" : "0");
         comments.setText(currentPost.getComments() != null ? currentPost.getComments().size() + "" : "");
         tags.setText(getTagsString(currentPost));
-        rate.setText(String.valueOf(currentPost.getAveragePostRate()));
+        rate.setText(String.valueOf(currentPost.getAveragePostRate()).substring(0,1));
         uploaderUsername.setText(currentPost.getCreator().getUsername());
         this.position = position;
     }
