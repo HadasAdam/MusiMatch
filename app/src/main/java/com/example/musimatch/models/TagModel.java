@@ -56,5 +56,6 @@ public class TagModel {
         tags.add(new Tag(10L, TagGroup.KIDS, "Childhood"));
         tags.add(new Tag(11L, TagGroup.HAPPINESS, "Friends"));
         tags.add(new Tag(12L, TagGroup.ROMANCE, "Kisses"));
+        tags.add(new Tag(13L, TagGroup.ANIMALS, "Fish"));
     }
 }
