@@ -244,6 +244,7 @@ public class PostModel {
                 null, UserModel.instance.findUserById(3L),
                 PostType.POEM));
         posts.get(6).addTag(TagModel.instance.findTagById(9L));
+        posts.get(6).addComment(new Comment(1L, UserModel.instance.findUserById(5L), posts.get(6), "i think this will be good for you:\n" + "https://www.youtube.com/watch?v=uypk72E_pQw", new Date()));
 
 
         posts.add(new Post(7L, "Trupi Rupi", "I love saying nothing\nI love food too\nTrupi Rupi" +
@@ -252,6 +253,7 @@ public class PostModel {
                 PostType.POEM));
         posts.get(7).addTag(TagModel.instance.findTagById(8L));
         posts.get(7).addTag(TagModel.instance.findTagById(1L));
+        posts.get(7).addComment(new Comment(1L, UserModel.instance.findUserById(8L), posts.get(7), "check this:\n" + "https://www.youtube.com/watch?v=O-acu0Pe__s", new Date()));
 
 
         posts.add(new Post(8L, "You Fit Into Me", "you fit into me\n like a hook into an eye\n a fish hook\n an open eye",
@@ -260,6 +262,8 @@ public class PostModel {
         posts.get(8).addTag(TagModel.instance.findTagById(1L));
         posts.get(8).addComment(new Comment(1L, UserModel.instance.findUserById(9L), posts.get(8), "like a hook into my heart, great song, i will try to make a melody to this one!", new Date()));
         posts.get(8).addComment(new Comment(2L, UserModel.instance.findUserById(7L), posts.get(8), "great poem", new Date()));
+        posts.get(8).addComment(new Comment(3L, UserModel.instance.findUserById(9L), posts.get(8), "try this: https://www.youtube.com/watch?v=PUM5YV-Xctc", new Date()));
+
 
 
         posts.add(new Post(9L, "Risk", "And then the day came,\n when the risk\n" +
@@ -295,11 +299,18 @@ public class PostModel {
         posts.get(11).addTag(TagModel.instance.findTagById(7L));
         posts.get(11).addTag(TagModel.instance.findTagById(9L));
         posts.get(11).addComment(new Comment(1L, UserModel.instance.findUserById(5L), posts.get(11), "just let me sleep !!!", new Date()));
+        posts.get(11).addComment(new Comment(1L, UserModel.instance.findUserById(5L), posts.get(11), "https://www.youtube.com/watch?v=AHh-Bmjaut0", new Date()));
 //        posts.get(11).addSerialRater(new SerialRater(1L, PoemRateSections.DEPT ,null, 4, UserModel.instance.findUserById(3L), posts.get(11)));
 //        posts.get(11).addSerialRater(new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 5, UserModel.instance.findUserById(5L), posts.get(11)));
 //        posts.get(11).addSerialRater(new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(5L), posts.get(11)));
 
 
+
+        posts.add(new Post(12L, "melody to - So Tired Blues", "https://www.youtube.com/watch?v=3SeOVVJXOUo",
+                "check this melody:\n" +"https://www.youtube.com/watch?v=3SeOVVJXOUo", UserModel.instance.findUserById(6L), PostType.MELODY));
+        posts.get(12).addComment(new Comment(1L, UserModel.instance.findUserById(6L), posts.get(12), "this is a melody that i wrote to the poem that is linked to my post.\n" +
+                "ley me know what you guys think...", new Date()));
+        posts.get(12).addComment(new Comment(2L, UserModel.instance.findUserById(1L), posts.get(12), "wow! that's what i'm talking about!!! thanks mate :)", new Date()));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -309,11 +320,11 @@ public class PostModel {
         linkPosts(posts.get(3),posts.get(7));
         linkPosts(posts.get(3),posts.get(6));
         linkPosts(posts.get(3),posts.get(1));
-
         linkPosts(posts.get(10),posts.get(7));
         linkPosts(posts.get(11),posts.get(10));
         linkPosts(posts.get(8),posts.get(2));
         linkPosts(posts.get(9),posts.get(4));
         linkPosts(posts.get(6),posts.get(5));
+        linkPosts(posts.get(12),posts.get(11));
     }
 }
