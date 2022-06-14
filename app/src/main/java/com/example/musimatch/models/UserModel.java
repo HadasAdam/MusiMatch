@@ -1,6 +1,7 @@
 package com.example.musimatch.models;
 
 import android.os.Build;
+import android.view.Display;
 
 import androidx.annotation.RequiresApi;
 
@@ -34,7 +35,7 @@ public class UserModel {
     public User findUserById(Long id) {
         for (User user : users)
         {
-            if(user.getId() == id)
+            if(user.getId().equals(id))
             {
                 return user;
             }
@@ -72,6 +73,30 @@ public class UserModel {
                 return;
             }
         }
+    }
+
+    public void updateAverageRate(User user) {
+        ArrayList<Post> allUserPosts = PostModel.instance.findPostsByUser(user);
+        double sum = 0;
+        double counter = 0;
+
+        for (int i = 0; i < allUserPosts.size(); i++)
+        {
+            sum += allUserPosts.get(i).getAverageRater().getRaterSection1() +
+                    allUserPosts.get(i).getAverageRater().getRaterSection2() +
+                    allUserPosts.get(i).getAverageRater().getRaterSection3();
+            counter += 3;
+        }
+        user.setAverageRate(round((sum/counter), 1));
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

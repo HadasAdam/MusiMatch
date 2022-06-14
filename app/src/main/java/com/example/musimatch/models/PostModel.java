@@ -74,7 +74,7 @@ public class PostModel {
         ArrayList<Post> relevantPosts = new ArrayList<>();
         for (Post post : posts)
         {
-            if(post.getCreator().equals(user))
+            if(post.getCreator().getId().equals(user.getId()))
             {
                 relevantPosts.add(post);
             }
@@ -300,9 +300,9 @@ public class PostModel {
         posts.get(11).addTag(TagModel.instance.findTagById(9L));
         posts.get(11).addComment(new Comment(1L, UserModel.instance.findUserById(5L), posts.get(11), "just let me sleep !!!", new Date()));
         posts.get(11).addComment(new Comment(1L, UserModel.instance.findUserById(5L), posts.get(11), "https://www.youtube.com/watch?v=AHh-Bmjaut0", new Date()));
-//        posts.get(11).addSerialRater(new SerialRater(1L, PoemRateSections.DEPT ,null, 4, UserModel.instance.findUserById(3L), posts.get(11)));
-//        posts.get(11).addSerialRater(new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 5, UserModel.instance.findUserById(5L), posts.get(11)));
-//        posts.get(11).addSerialRater(new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(5L), posts.get(11)));
+        posts.get(11).addSerialRater(new SerialRater(1L, PoemRateSections.DEPT ,null, 4, UserModel.instance.findUserById(3L), posts.get(11)));
+        posts.get(11).addSerialRater(new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 5, UserModel.instance.findUserById(5L), posts.get(11)));
+        posts.get(11).addSerialRater(new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(5L), posts.get(11)));
 
 
 

@@ -234,9 +234,35 @@ public class Post implements Serializable {
             }
         }
 
-        averageRater.setRaterSection1((double) (sums[FIRST_RATER_INDEX]/counters[FIRST_RATER_INDEX]));
-        averageRater.setRaterSection2((double) (sums[SECOND_RATER_INDEX]/counters[SECOND_RATER_INDEX]));
-        averageRater.setRaterSection3((double) (sums[THIRD_RATER_INDEX]/counters[THIRD_RATER_INDEX]));
+        if (sums[FIRST_RATER_INDEX] > 0 && sums[SECOND_RATER_INDEX] > 0 && sums[THIRD_RATER_INDEX] > 0)
+        {
+            averageRater.setRaterSection1((double) (sums[FIRST_RATER_INDEX]/counters[FIRST_RATER_INDEX]));
+            averageRater.setRaterSection2((double) (sums[SECOND_RATER_INDEX]/counters[SECOND_RATER_INDEX]));
+            averageRater.setRaterSection3((double) (sums[THIRD_RATER_INDEX]/counters[THIRD_RATER_INDEX]));
+            updateAverageRate();
+        }
+    }
+
+
+    public void updateAverageRate() {
+        double sum = 0;
+        double counter = 3;
+        sum += this.getAverageRater().getRaterSection1() +
+                this.getAverageRater().getRaterSection2() +
+                this.getAverageRater().getRaterSection3();
+        if (sum > 0) {
+            this.setAveragePostRate(round((sum/counter),1));
+        }
+
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 
     public AverageRater getAverageRater() {
