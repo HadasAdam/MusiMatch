@@ -135,6 +135,7 @@ public class Post implements Serializable {
 //    @OneToOne
 //    @JoinColumn(name = "AVERAGE_RATER_ID", refferencedColumnName = "ID")
     public Double getAveragePostRate() {
+        updateAverageRater();
         return averagePostRate;
     }
 

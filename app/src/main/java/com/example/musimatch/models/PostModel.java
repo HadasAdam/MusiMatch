@@ -207,6 +207,15 @@ public class PostModel {
         posts.get(2).addTag(TagModel.instance.findTagById(9L));
         posts.get(2).addComment(new Comment(1L, UserModel.instance.findUserById(1L), posts.get(2), "wow lovely!!!", new Date()));
         posts.get(2).addComment(new Comment(2L, UserModel.instance.findUserById(3L), posts.get(2), "great song, gonna be a hit", new Date()));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 1, UserModel.instance.findUserById(3L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 1, UserModel.instance.findUserById(3L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 2, UserModel.instance.findUserById(3L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 3, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 2, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 2, UserModel.instance.findUserById(5L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 1, UserModel.instance.findUserById(5L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 2, UserModel.instance.findUserById(5L), posts.get(2)));
 
 
         posts.add(new Post(3L, "Love Can Heal", "Love can heal\nBodies and souls\nbut love can kill" +
@@ -237,6 +246,15 @@ public class PostModel {
         posts.get(5).addComment(new Comment(2L, UserModel.instance.findUserById(4L), posts.get(5), "not bad...", new Date()));
         posts.get(5).addComment(new Comment(3L, UserModel.instance.findUserById(9L), posts.get(5), "love it", new Date()));
         posts.get(5).addComment(new Comment(4L, UserModel.instance.findUserById(1L), posts.get(5), "i dont use instagram but it's looks good", new Date()));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 3, UserModel.instance.findUserById(3L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 3, UserModel.instance.findUserById(3L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 1, UserModel.instance.findUserById(3L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 4, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 2, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 1, UserModel.instance.findUserById(4L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(1L, PoemRateSections.DEPT ,null, 2, UserModel.instance.findUserById(8L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 3, UserModel.instance.findUserById(8L), posts.get(2)));
+        addOrUpdateSerialRater(posts.get(2),new SerialRater(3L, PoemRateSections.RHYMES ,null, 1, UserModel.instance.findUserById(8L), posts.get(2)));
 
 
         posts.add(new Post(6L, "Over Now", "It's Over Now\nOver Now\nNo body cares" +
@@ -300,9 +318,9 @@ public class PostModel {
         posts.get(11).addTag(TagModel.instance.findTagById(9L));
         posts.get(11).addComment(new Comment(1L, UserModel.instance.findUserById(5L), posts.get(11), "just let me sleep !!!", new Date()));
         posts.get(11).addComment(new Comment(1L, UserModel.instance.findUserById(5L), posts.get(11), "https://www.youtube.com/watch?v=AHh-Bmjaut0", new Date()));
-        posts.get(11).addSerialRater(new SerialRater(1L, PoemRateSections.DEPT ,null, 4, UserModel.instance.findUserById(3L), posts.get(11)));
-        posts.get(11).addSerialRater(new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 5, UserModel.instance.findUserById(5L), posts.get(11)));
-        posts.get(11).addSerialRater(new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(5L), posts.get(11)));
+        addOrUpdateSerialRater(posts.get(11),new SerialRater(1L, PoemRateSections.DEPT ,null, 4, UserModel.instance.findUserById(3L), posts.get(11)));
+        addOrUpdateSerialRater(posts.get(11),new SerialRater(2L, PoemRateSections.LANGUAGE ,null, 5, UserModel.instance.findUserById(3L), posts.get(11)));
+        addOrUpdateSerialRater(posts.get(11),new SerialRater(3L, PoemRateSections.RHYMES ,null, 4, UserModel.instance.findUserById(3L), posts.get(11)));
 
 
 
