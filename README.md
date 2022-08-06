@@ -13,4 +13,4 @@ in addition to the application, we also created a Web application that will be u
 where we can monitor the user data and even create various statistics that can be used by us in the future for optimization.
 
 
-Preseted By: Eyal Levi, Hadas Adam, Inon Barber, Liam Golan and Yonatan Shuster.
+Preseted By: Eyal Levi, Hadas Adam, Inon Barber, Liam Golan and Yonatan Schuster.
