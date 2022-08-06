@@ -1,5 +1,6 @@
 # MusiMatch
-connecting between talented people
+connecting between talented people.
+
 Our project is actually a kind of social platform designed to create "matching" between creators in the world of music.
 The application is intended for poets/composers who want to share their works and receive relevant criticism from other people online.
 Each registered user will have the option to upload a new piece, of two possible types - text or melody.
